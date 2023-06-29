@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Portfolio</title>
+  <style>
+    a{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav class="flex justify-between items-center fixed w-full bg-black h-16 z-50">
+        <div class="flex items-center pl-8 lg:pl-20">
+          <h1 class="text-white text-xl font-bold ">Sonal Mittal</h1>
+        </div>
+    
+        <i class="fa-solid fa-bars lg:hidden md:pr-32 pr-12" style="color: #ffffff;"></i>
+        <div class="pr-24 p-4 text-end space-x-24 lg:block md:hidden hidden " > 
+
+            <a href="#" class="text-white h-10 w-15 text-xl font-semibold"> Home </a> 
+            <a href="#" class="text-white h-10 w-15 text-xl font-semibold"> About </a>
+            <a href="#" class="text-white h-10 w-15 text-xl font-semibold"> Tools </a>
+            <a href="#" class="text-white h-10 w-15 text-xl font-semibold"> Contact </a>
+        </div>
+    </nav>
+
+
+
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto flex flex-col">
+        <div class="lg:w-4/6 mx-auto">
+          <div class="rounded-lg flex justify-center">
+            <img alt="content" class="h-72 rounded-lg" src="https://as2.ftcdn.net/v2/jpg/01/51/26/75/1000_F_151267526_CCzkZ7cM0p2dTalSL6RQIoDxr2VUXEkZ.jpg">
+          </div>
+          <div class="flex flex-col sm:flex-row mt-10">
+            <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
+              <div class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="flex flex-col items-center text-center justify-center">
+                <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">Sonal Mittal</h2>
+                <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                <p class="text-base">Front end Developer</p>
+                <button class="text-xl mt-4 px-6 py-4 bg-red-400 rounded-lg ">Download Resume</button>
+              </div>
+            </div>
+            <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+              <p class="leading-relaxed text-lg mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, quaerat. Impedit iure, repellat blanditiis reiciendis ipsam pariatur, hic magnam atque quas illo totam animi nisi harum, dolore quam explicabo veniam!</p>
+              <a class="text-indigo-500 inline-flex items-center">Learn More
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class=" text-gray-400 bg-gray-900 text-black body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col">
+          <div class="h-1 bg-gray-800 rounded overflow-hidden">
+            <div class="w-24 h-full bg-indigo-500"></div>
+          </div>
+          <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+            <h1 class="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Front end Developer</h1>
+            <p class="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero eaque, laboriosam totam minima iusto autem, error magni repudiandae velit magnam numquam voluptates, neque asperiores sunt cupiditate consectetur? Sunt, magnam recusandae!</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+
+          <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+            <div class=" rounded-lg h-64 overflow-hidden ">
+              <img alt="content" class="object-cover object-center h-full w-full " src="https://repository-images.githubusercontent.com/486226419/99587ec7-b54b-4ccc-9d8e-eae9cbbc6f9e">
+            </div>
+            <h2 class="text-xl font-medium title-font text-white mt-5">HTML</h2>
+            <p class="text-base leading-relaxed mt-2">HTML is the standard markup language for Web pages</p>
+            <p class="text-base leading-relaxed">With HTML you can create your own Website. </p>
+            <p class="text-base leading-relaxed">HTML is easy to learn - You will enjoy it!</p>
+            <a class="text-indigo-400 inline-flex items-center mt-3">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+            <div class="rounded-lg h-64 overflow-hidden">
+              <img alt="content" class="object-cover object-center h-full w-full" src="data:image/jpeg;base64,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">
+            </div>
+            <h2 class="text-xl font-medium title-font text-white mt-5">CSS</h2>
+            <p class="text-base leading-relaxed mt-2">CSS is the language we use to style an HTML document.</p>
+            <p class="text-base leading-relaxed ">CSS describes how HTML elements should be displayed.</p>
+            <p class="text-base leading-relaxed ">This tutorial will teach you CSS from basic to advanced.</p>
+            <a class="text-indigo-400 inline-flex items-center mt-3">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+            <div class="rounded-lg h-64 overflow-hidden">
+              <img alt="content" class="object-cover object-center h-full w-full" src="https://repository-images.githubusercontent.com/200666631/0060c080-d060-11ea-9698-98d89d68fc6d">
+            </div>
+            <h2 class="text-xl font-medium title-font text-white mt-5">JAVA SCRIPT</h2>
+            <p class="text-base leading-relaxed mt-2">JavaScript is the world's most popular programming language.</p>
+            <p class="text-base leading-relaxed ">JavaScript is the programming language of the Web.</p>
+            <p class="text-base leading-relaxed ">JavaScript is easy to learn.</p>
+            <a class="text-indigo-400 inline-flex items-center mt-3">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+            <div class="rounded-lg overflow-hidden h-64">
+              <img alt="content" class="object-cover object-center h-full w-full" src="data:image/png;base64,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">
+            </div>
+            <h2 class="text-xl font-medium title-font text-white mt-5">React</h2>
+            <p class="text-base leading-relaxed mt-2">React is a JavaScript library for building user interfaces.</p>
+            <p class="text-base leading-relaxed ">React is used to build single-page applications.</p>
+            <p class="text-base leading-relaxed ">React allows us to create reusable UI components.</p>
+            <a class="text-indigo-400 inline-flex items-center mt-3">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+            <div class="rounded-lg overflow-hidden h-64">
+              <img alt="content" class="object-cover object-center h-full w-full" src="data:image/png;base64,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">
+            </div>
+            <h2 class="text-xl font-medium title-font text-white mt-5">NODE JS</h2>
+            <p class="text-base leading-relaxed mt-2">Node.js is an open source server environment.</p>
+            <p class="text-base leading-relaxed ">Node.js allows you to run JavaScript on the server.</p>
+            <a class="text-indigo-400 inline-flex items-center mt-9">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
+            <div class="rounded-lg overflow-hidden h-64">
+              <img alt="content" class="object-cover object-center h-full w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQSwLuUIdXRY1YIsYGlNLQrSVfAJBeHueAA&usqp=CAU">
+            </div>
+            <h2 class="text-xl font-medium title-font text-white mt-5">DJANGO</h2>
+            <p class="text-base leading-relaxed mt-2">Django is a back-end server side web framework.</p>
+            <p class="text-base leading-relaxed ">Django is free, open source and written in Python.</p>
+            <p class="text-base leading-relaxed ">Django makes it easier to build web pages using Python.</p>
+            <a class="text-indigo-400 inline-flex items-center mt-3">Learn More
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    
+
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-20">Tools used by front&er</h1>
+        <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
+          <div class="p-4 md:w-1/3 flex">
+            <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+            </div>
+            <div class="flex-grow pl-6">
+              <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Visual Studio Code</h2>
+              <p class="leading-relaxed text-base">A better code editor is a fundamental requirement of front-end developers – and with a similar concern, here we’re mentioning one of the most recommended code editors for you i.e., Visual Studio Code. This open-source code editor by Microsoft leverages you with numerous remarkable features such as syntax highlighting, smart code completion, built-in debugger, built-in Git commands, easier deployment capabilities, and many others. In addition, it is available for Windows, macOS, and Linux as well – also, Visual Code Studio provides you with built-in support for JavaScript, TypeScript & Node.js and other languages such as C++, Java, Python, PHP, etc. can also be supported using extensions. </p>
+              <a class="mt-4 text-indigo-500 inline-flex items-center">Learn More
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/3 flex">
+            <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+              </svg>
+            </div>
+            <div class="flex-grow pl-6">
+              <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Git</h2>
+              <p class="leading-relaxed text-base">Another tool that comes in this list is a popular version control system - Git. It allows you to manage the source codes, track the changes that you’ve made in your code or even roll back to the previous state in a much convenient way. It saves every change and allows all the developers in the team to work on the same code at the same time without any hassle. It makes the collaboration among developers more smooth by reducing the risk of situations like code conflict, etc. Meanwhile, Git is free to use, open-source, and very much secure – what else you need to get started with the enriching tool for front-end web development.</p>
+              <a class="mt-16 text-indigo-500 inline-flex items-center">Learn More
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/3 flex">
+            <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="flex-grow pl-6">
+              <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Chrome DevTools</h2>
+              <p class="leading-relaxed text-base">Chrome DevTools is a widely used web development tool that allows you to edit web pages directly from the Google Chrome browser and diagnose problems rapidly to build better websites. With the help of Chrome DevTools, you can easily edit your HTML & CSS code or debug JavaScript code in a real-time environment. It offers you numerous additional prominent advantages such as using ‘Timeline’ you can conveniently recognize run-time performance problems, the ‘Device Mode’ can help you test the responsiveness of the website, ‘Sources Panel’ can be used to debug the JavaScript using breakpoints, the ‘Network Panel allows you to view and debug network activity, and many more. </p>
+              <a class="mt-10 text-indigo-500 inline-flex items-center">Learn More
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-gray-600 body-font relative">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+        </div>
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <div class="flex flex-wrap -m-2">
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+            </div>
+            <div class="p-2 w-1/2">
+              <div class="relative">
+                <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <div class="relative">
+                <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+              </div>
+            </div>
+            <div class="p-2 w-full">
+              <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+            </div>
+            <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+              
+              <span class="inline-flex">
+                <a class="text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+                <a class="ml-4 text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                  </svg>
+                </a>
+                <a class="ml-4 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  </svg>
+                </a>
+                <a class="ml-4 text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left ">
+            <img  src="web-developer.jpg">
+
+        </div>
+        <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0  md:text-left text-center">
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+              </li>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-100">
+        <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+          <p class="text-gray-500 text-sm text-center sm:text-left">
+            Copyright © 2023 By Sonal Mittal | All Rights Reserved
+          </p>
+          <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+            <a class="text-gray-500 cursor-pointer">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500  cursor-pointer">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500  cursor-pointer">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500  cursor-pointer">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>
