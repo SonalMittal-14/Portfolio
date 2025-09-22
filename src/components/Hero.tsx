@@ -1,330 +1,255 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { Linkedin, ArrowRight } from 'lucide-react';
 
-const VogueCoverHero = () => {
+const Hero = () => {
   const [mounted, setMounted] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [currentTime, setCurrentTime] = useState('');
+  const [activeSection, setActiveSection] = useState('home');
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    
-    // Update time for that magazine authenticity
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleString('en-US', { 
-        month: 'long', 
-        year: 'numeric' 
-      }).toUpperCase());
-    };
-    updateTime();
-    
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    setTimeout(() => setIsVisible(true), 200);
   }, []);
+
+  const navItems = [
+    { id: 'home', label: 'HOME' },
+    { id: 'about', label: 'ABOUT' },
+    { id: 'portfolio', label: 'PORTFOLIO' },
+    { id: 'blog', label: 'BLOG' },
+    { id: 'contact', label: 'CONTACT' }
+  ];
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-[#3D0A05] flex items-center justify-center">
-        <div className="text-[#DAC1B1] text-2xl font-light tracking-widest animate-pulse">LOADING...</div>
-      </div>
+       <section className="min-h-screen flex">
+         <div className="w-[55%] bg-[#3D0A05] flex items-center justify-center p-16">
+          <div className="space-y-12 max-w-4xl text-center">
+            <div className="h-32 bg-slate-700 rounded animate-pulse"></div>
+            <div className="h-16 bg-slate-700 rounded animate-pulse"></div>
+            <div className="space-y-6">
+              <div className="h-16 w-64 bg-slate-700 rounded animate-pulse mx-auto"></div>
+              <div className="h-16 w-48 bg-slate-700 rounded animate-pulse mx-auto"></div>
+            </div>
+          </div>
+        </div>
+         <div className="w-[45%] relative">
+          <div className="w-full h-screen bg-slate-200 animate-pulse"></div>
+          <div className="absolute top-16 left-8 w-16 h-32 bg-slate-300 rounded animate-pulse"></div>
+          <div className="absolute right-0 top-0 w-20 h-full bg-[#3D0A05] animate-pulse"></div>
+        </div>
+      </section>
     );
   }
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-[#3D0A05]">
-      
-      {/* Magazine Header - Vogue Style */}
-      <div className="absolute top-0 left-0 right-0 z-50 p-8 lg:p-12">
-        <div className="flex justify-between items-start">
-          <div className="space-y-2">
-            <h1 className="text-4xl lg:text-6xl font-bold tracking-[0.3em] text-[#DAC1B1] font-serif">
-              PORTFOLIO
-            </h1>
-            <div className="w-24 h-px bg-[#A58570] animate-pulse"></div>
+    <section id="home" className="min-h-screen relative overflow-hidden">
+      {/* Main Hero Container */}
+      <div className="flex min-h-screen">
+        {/* Left Side - Content Section (55%) - Vogue Inspired */}
+        <div className="w-[55%] bg-[#3D0A05] flex items-center justify-center p-16 relative">
+          {/* Decorative Background Elements */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-5">
+            <div className="absolute top-20 left-20 w-px h-40 bg-gradient-to-b from-white to-transparent transform rotate-12"></div>
+            <div className="absolute bottom-32 right-32 w-px h-60 bg-gradient-to-t from-white to-transparent transform -rotate-12"></div>
           </div>
-          
-          <div className="text-right space-y-1">
-            <p className="text-[#A58570] text-sm tracking-widest font-light">{currentTime}</p>
-            <p className="text-[#DAC1B1] text-xs tracking-wider opacity-80">DIGITAL EDITION</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Base gradient with texture */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#3D0A05] via-[#7F1F0E] to-[#3D0A05]"></div>
-        
-        {/* Animated geometric shapes */}
-        <div 
-          className="absolute w-[800px] h-[800px] opacity-5 transition-transform duration-1000 ease-out"
-          style={{
-            background: `radial-gradient(circle, #A58570 1px, transparent 1px)`,
-            backgroundSize: '40px 40px',
-            transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) rotate(45deg)`
-          }}
-        ></div>
-
-        {/* Floating elements for depth */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-32 bg-gradient-to-b from-[#AC746C] to-transparent opacity-30 transform rotate-12 animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-1 h-24 bg-gradient-to-t from-[#DAC1B1] to-transparent opacity-40 transform -rotate-45 animate-pulse" style={{animationDelay: '1s'}}></div>
-        
-        {/* Elegant light rays */}
-        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-[#DAC1B1]/20 via-transparent to-transparent opacity-60 animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>
-
-      {/* Main Content Layout */}
-      <div className="relative z-10 min-h-screen flex items-center pt-32 pb-16">
-        <div className="max-w-7xl mx-auto px-8 lg:px-16 w-full">
-          
-          {/* Editorial Layout Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            {/* Left Column - Editorial Content */}
-            <div className="lg:col-span-7 space-y-12">
+          <div className="max-w-5xl z-10 text-left">
+            {/* Fashion Magazine Style Layout */}
+            <div className="space-y-16">
               
-              {/* Fashion Tag Line */}
-              <div className="space-y-6">
-                <div className="inline-flex items-center space-x-4">
-                  <div className="w-16 h-px bg-[#A58570]"></div>
-                  <span className="text-[#A58570] text-sm font-light tracking-[0.4em] uppercase">Featured Story</span>
-                </div>
-                
-                {/* Main Headlines - Vogue Typography */}
-                <div className="space-y-4">
-                  <h2 className="text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.85] tracking-tight">
-                    <span className="block text-white font-serif relative group">
-                      SONAL
-                      {/* Elegant text shadow effect */}
-                      <span 
-                        className="absolute inset-0 text-[#7F1F0E] opacity-50 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 -z-10"
-                      >
-                        SONAL
-                      </span>
-                    </span>
-                    <span className="block text-[#DAC1B1] font-serif italic relative group">
-                      MITTAL
-                      <span 
-                        className="absolute inset-0 text-[#AC746C] opacity-30 transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1 -z-10"
-                      >
-                        MITTAL
-                      </span>
-                    </span>
-                  </h2>
-                </div>
-
-                {/* Professional Title with Vogue Styling */}
-                <div className="space-y-4">
-                  <h3 className="text-2xl lg:text-3xl font-light text-[#A58570] tracking-[0.3em] uppercase relative">
-                    AI Engineer & Developer
-                    <div className="absolute -bottom-2 left-0 w-32 h-px bg-gradient-to-r from-[#AC746C] to-transparent"></div>
-                  </h3>
-                </div>
+              {/* Editorial Header Line */}
+              <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className="w-24 h-px bg-gradient-to-r from-amber-300 to-transparent mb-8"></div>
+                <p className="text-amber-200 text-sm tracking-[0.3em] font-light uppercase" style={{fontFamily: 'Times New Roman, serif'}}>
+                  PORTFOLIO • 2025
+                </p>
               </div>
 
-              {/* Editorial Quote */}
-              <div className="relative max-w-2xl">
-                <div className="absolute -top-8 -left-4 text-[#7F1F0E] text-8xl font-serif opacity-30 leading-none">"</div>
-                <blockquote className="text-xl lg:text-2xl text-[#DAC1B1] font-light leading-relaxed italic pl-8 relative">
-                  Crafting AI-powered solutions with the precision of haute couture and the innovation of tomorrow's technology.
-                </blockquote>
-                <div className="absolute -bottom-4 right-0 text-[#7F1F0E] text-8xl font-serif opacity-30 leading-none rotate-180">"</div>
+              {/* Main Title - Vogue Magazine Style */}
+              <div className={`transform transition-all duration-1200 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                <h1 className="relative">
+                  {/* Background Text Effect */}
+                  <span className="absolute -top-4 -left-2 text-8xl font-black text-white/5 tracking-wider select-none" style={{fontFamily: 'Times New Roman, serif'}}>
+                    AI ENGINEER
+                  </span>
+                  
+                  {/* Main Text */}
+                  <div className="relative z-10">
+                    <div className="text-7xl xl:text-8xl font-black text-white leading-[0.85] tracking-tight mb-4" style={{fontFamily: 'Times New Roman, serif'}}>
+                      <span className="block">AI ENGINEER</span>
+                      <span className="block text-6xl xl:text-7xl mt-2 ml-8">&</span>
+                      <span className="block text-5xl xl:text-6xl mt-2 ml-16 text-red-400">DEVELOPER</span>
+                    </div>
+                  </div>
+                </h1>
               </div>
 
               {/* Elegant Divider */}
-              <div className="flex items-center space-x-6">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-[#AC746C] rounded-full animate-pulse"></div>
-                  <div className="w-3 h-3 bg-[#A58570] rounded-full animate-pulse" style={{animationDelay: '0.3s'}}></div>
-                  <div className="w-3 h-3 bg-[#7F1F0E] rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
+              <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}>
+                <div className="flex items-center space-x-6">
+                  <div className="w-16 h-px bg-gradient-to-r from-amber-300 to-amber-300/30"></div>
+                  <div className="w-2 h-2 bg-amber-300 rotate-45"></div>
+                  <div className="w-32 h-px bg-gradient-to-r from-amber-300/30 to-transparent"></div>
                 </div>
-                <div className="flex-1 h-px bg-gradient-to-r from-[#A58570] to-transparent"></div>
               </div>
-
-              {/* Fashion-Forward Action Buttons */}
-              <div className="space-y-8">
-                <div className="flex flex-col sm:flex-row gap-6">
+              
+              {/* Tagline - Fashion Editorial Style */}
+              <div className={`transform transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <blockquote className="relative">
+                  <div className="absolute -top-6 -left-4 text-6xl text-amber-300/30" style={{fontFamily: 'Times New Roman, serif'}}>"</div>
+                  <p className="text-stone-200 text-xl xl:text-2xl leading-relaxed italic font-light max-w-3xl pl-8" style={{fontFamily: 'Times New Roman, serif'}}>
+                    Crafting AI-powered solutions with the precision of haute couture and the innovation of tomorrow's technology.
+                  </p>
+                  <div className="absolute -bottom-4 right-0 text-6xl text-amber-300/30 rotate-180" style={{fontFamily: 'Times New Roman, serif'}}>"</div>
+                </blockquote>
+              </div>
+              
+              {/* Call-to-Action Buttons - Fashion Magazine Style */}
+              <div className={`transform transition-all duration-1000 delay-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className="flex flex-col sm:flex-row gap-6 pt-8">
+                  {/* Primary Button */}
+                  <a
+                    href="#portfolio"
+                    className="group relative overflow-hidden inline-flex items-center justify-center px-12 py-5 bg-red-600 hover:bg-red-700 text-white text-lg font-medium transition-all duration-500 shadow-2xl hover:shadow-red-500/25 transform hover:-translate-y-1 border-2 border-red-600"
+                    style={{fontFamily: 'Times New Roman, serif'}}
+                  >
+                    <span className="relative z-10 tracking-wider uppercase">View Portfolio</span>
+                    <ArrowRight className="ml-4 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                    
+                    {/* Hover Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  </a>
                   
-                  {/* Primary CTA - Editorial Style */}
-                  <button className="group relative px-12 py-6 bg-[#7F1F0E] hover:bg-[#AC746C] text-white font-light tracking-[0.2em] uppercase text-lg transition-all duration-500 overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#7F1F0E]/30">
-                    <span className="relative z-10 flex items-center justify-center gap-4">
-                      View Portfolio
-                      <div className="w-8 h-px bg-current transform group-hover:w-12 transition-all duration-300"></div>
-                    </span>
-                    {/* Elegant shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                  </button>
-
-                  {/* Secondary CTA */}
-                  <button className="group relative px-12 py-6 border border-[#A58570] hover:border-[#DAC1B1] text-[#A58570] hover:text-white font-light tracking-[0.2em] uppercase text-lg transition-all duration-500 overflow-hidden transform hover:-translate-y-2 backdrop-blur-sm hover:shadow-2xl hover:shadow-[#A58570]/20">
-                    <span className="relative z-10 flex items-center justify-center gap-4">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
-                      </svg>
+                  {/* Secondary Button */}
+                  <a
+                    href="#contact"
+                    className="group relative inline-flex items-center justify-center px-12 py-5 border-2 border-stone-400 text-stone-300 hover:bg-white hover:text-[#3D0A05] hover:border-white transition-all duration-500 overflow-hidden"
+                    style={{fontFamily: 'Times New Roman, serif'}}
+                  >
+                    <span className="relative z-10 tracking-wider uppercase flex items-center">
+                      <Linkedin className="mr-3 w-5 h-5" />
                       Connect
                     </span>
-                    <div className="absolute inset-0 bg-[#A58570]/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                  </button>
-                </div>
-
-                {/* Status Indicator - Editorial Style */}
-                <div className="flex items-center space-x-4 text-[#A58570]">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-[#AC746C] rounded-full animate-pulse shadow-lg shadow-[#AC746C]/50"></div>
-                    <span className="text-sm font-light tracking-wide">Available for collaborations</span>
-                  </div>
-                  <div className="w-px h-4 bg-[#A58570]/50"></div>
-                  <span className="text-xs tracking-wider opacity-70">Open to new opportunities</span>
+                    
+                    {/* Elegant underline effect */}
+                    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-stone-300 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                  </a>
                 </div>
               </div>
+
+              {/* Editorial Credit */}
+              <div className={`transform transition-all duration-1000 delay-1500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                <div className="pt-16">
+                  <p className="text-stone-500 text-xs tracking-[0.2em] uppercase" style={{fontFamily: 'Times New Roman, serif'}}>
+                    Est. • Innovative • Professional
+                  </p>
+                </div>
+              </div>
+
             </div>
+          </div>
+        </div>
 
-            {/* Right Column - Hero Image with Editorial Frame */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
-              <div className="relative group">
-                
-                {/* Magazine-style photo frame */}
-                <div className="relative w-80 h-[500px] lg:w-96 lg:h-[600px]">
-                  
-                  {/* Outer editorial frame */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#DAC1B1] to-[#A58570] p-6 transform rotate-1 shadow-2xl transition-transform duration-700 group-hover:rotate-2 group-hover:scale-105">
-                    <div className="w-full h-full bg-[#3D0A05] p-4">
-                      <div className="w-full h-full overflow-hidden relative">
-                        <img
-                          src="/images/dark/SonalPic2.png"
-                          alt="Sonal Mittal - AI Engineer"
-                          className="w-full h-full object-cover object-center transition-all duration-1000 group-hover:scale-110 filter brightness-110 contrast-110"
-                          style={{
-                            filter: 'brightness(1.1) contrast(1.1) saturate(1.05)'
-                          }}
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.parentNode.innerHTML = `
-                              <div class="w-full h-full bg-gradient-to-br from-[#7F1F0E] to-[#AC746C] flex items-center justify-center">
-                                <div class="text-[#DAC1B1] text-6xl font-bold font-serif">SM</div>
-                              </div>
-                            `;
-                          }}
-                        />
-                        
-                        {/* Editorial overlay effects */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#3D0A05]/30 via-transparent to-transparent"></div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#7F1F0E]/5 via-transparent to-[#AC746C]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                      </div>
-                    </div>
-                  </div>
+        {/* Right Side - Image Section (45%) */}
+        <div className="w-[45%] relative">
+          {/* Name overlay on image - Fashion Magazine Style */}
+          <div className="absolute top-8 right-24 z-20">
+            <div className={`transform transition-all duration-1200 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
+              <h3 className="text-6xl xl:text-7xl font-black tracking-[0.1em] leading-none" style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif'}}>
+                <span className="block">SONAL</span>
+                <span className="block text-5xl xl:text-6xl mt-1 ml-4">MITTAL</span>
+              </h3>
+              {/* Accent line under name */}
+              <div className="w-20 h-1 bg-red-600 mt-4 ml-4"></div>
+            </div>
+          </div>
 
-                  {/* Editorial corner marks */}
-                  <div className="absolute -top-4 -left-4 w-8 h-8">
-                    <div className="absolute top-0 left-0 w-full h-px bg-[#DAC1B1]"></div>
-                    <div className="absolute top-0 left-0 w-px h-full bg-[#DAC1B1]"></div>
-                  </div>
-                  
-                  <div className="absolute -top-4 -right-4 w-8 h-8">
-                    <div className="absolute top-0 right-0 w-full h-px bg-[#DAC1B1]"></div>
-                    <div className="absolute top-0 right-0 w-px h-full bg-[#DAC1B1]"></div>
-                  </div>
-                  
-                  <div className="absolute -bottom-4 -left-4 w-8 h-8">
-                    <div className="absolute bottom-0 left-0 w-full h-px bg-[#DAC1B1]"></div>
-                    <div className="absolute bottom-0 left-0 w-px h-full bg-[#DAC1B1]"></div>
-                  </div>
-                  
-                  <div className="absolute -bottom-4 -right-4 w-8 h-8">
-                    <div className="absolute bottom-0 right-0 w-full h-px bg-[#DAC1B1]"></div>
-                    <div className="absolute bottom-0 right-0 w-px h-full bg-[#DAC1B1]"></div>
-                  </div>
+          {/* Profile Image */}
+          <div className="w-full h-full relative overflow-hidden">
+            <Image
+              src="/images/dark/SonalPic2.png"
+              alt="Sonal Mittal - AI Engineer & Developer"
+              width={600}
+              height={800}
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              priority
+              style={{
+                height: '100vh',
+                objectFit: 'cover',
+                objectPosition: 'center'
+              }}
+            />
+            
+            {/* Elegant overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10"></div>
+          </div>
 
-                  {/* Floating accent elements */}
-                  <div 
-                    className="absolute -top-8 -right-8 w-16 h-16 border border-[#AC746C]/30 transform rotate-45 transition-transform duration-1000"
-                    style={{
-                      transform: `rotate(45deg) translate(${mousePosition.x * 0.1}px, ${mousePosition.y * 0.1}px)`
-                    }}
-                  ></div>
-                  
-                  <div 
-                    className="absolute -bottom-6 -left-6 w-12 h-12 bg-[#7F1F0E]/20 rounded-full blur-sm animate-pulse"
-                    style={{animationDelay: '1s'}}
-                  ></div>
-                </div>
-
-                {/* Editorial shadow with depth */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3D0A05]/60 to-[#7F1F0E]/40 rounded-lg transform rotate-3 scale-95 -z-10 blur-xl transition-transform duration-700 group-hover:scale-100"></div>
-              </div>
+          {/* Fashion Magazine Style Scroll Indicator */}
+          <div className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white/80 ${isVisible ? 'animate-bounce' : ''}`}>
+            <div className="flex flex-col items-center space-y-3">
+              <span className="text-xs tracking-[0.3em] uppercase font-light" style={{fontFamily: 'Times New Roman, serif'}}>Scroll</span>
+              <div className="w-px h-16 bg-gradient-to-b from-white/60 via-white/30 to-transparent"></div>
+              <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Editorial Elements */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <div className="flex justify-between items-end p-8 lg:p-16">
-          <div className="space-y-2">
-            <div className="flex items-center space-x-4">
-              <span className="text-[#A58570] text-xs tracking-widest font-light">ISSUE #001</span>
-              <div className="w-8 h-px bg-[#A58570]"></div>
-              <span className="text-[#A58570] text-xs tracking-widest font-light">DIGITAL PORTFOLIO</span>
+      {/* Vertical Navbar - Far Right Edge */}
+      <nav className="fixed right-0 top-0 h-full w-20 z-50">
+        <div className="bg-[#3D0A05] h-full flex flex-col border-l border-stone-800">
+          {/* Navigation items */}
+          <div className="flex-1 flex flex-col justify-center py-16">
+            <div className="space-y-4">
+              {navItems.map((item, index) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={`group relative flex items-center justify-center w-full h-16 transition-all duration-300 ${
+                    activeSection === item.id 
+                      ? 'bg-white text-red-600 shadow-lg' 
+                      : 'text-white hover:bg-white/10 hover:text-amber-200'
+                  }`}
+                  onClick={() => setActiveSection(item.id)}
+                  title={item.label}
+                  style={{
+                    transitionDelay: `${index * 100}ms`
+                  }}
+                >
+                  <span 
+                    className="text-xs font-bold tracking-[0.2em] transition-colors duration-300"
+                    style={{
+                      writingMode: 'vertical-lr',
+                      textOrientation: 'mixed',
+                      fontFamily: 'Times New Roman, serif'
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                  
+                  {/* Active indicator - Fashion Magazine Style */}
+                  {activeSection === item.id && (
+                    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-12 bg-red-600 rounded-r-full shadow-lg"></div>
+                  )}
+                  
+                  {/* Hover effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-300/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+              ))}
             </div>
           </div>
           
-          <div className="text-right">
-            <p className="text-[#A58570] text-xs tracking-widest font-light opacity-70">
-              CRAFTED WITH PRECISION • DESIGNED WITH PASSION
-            </p>
+          {/* Elegant bottom accent */}
+          <div className="p-4">
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-stone-600 to-transparent"></div>
           </div>
         </div>
-        
-        {/* Elegant bottom accent */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#A58570] to-transparent"></div>
-      </div>
-
-      {/* Floating decorative elements */}
-      <div 
-        className="absolute top-1/3 right-16 opacity-20 transition-transform duration-1000 hidden lg:block"
-        style={{
-          transform: `translate(${mousePosition.x * 0.2}px, ${mousePosition.y * 0.2}px)`
-        }}
-      >
-        <div className="w-24 h-24 border border-[#DAC1B1]/30 transform rotate-45"></div>
-      </div>
-      
-      <div 
-        className="absolute bottom-1/3 left-16 opacity-15 transition-transform duration-1000 hidden lg:block"
-        style={{
-          transform: `translate(${mousePosition.x * -0.1}px, ${mousePosition.y * -0.1}px)`
-        }}
-      >
-        <div className="w-32 h-1 bg-[#AC746C]/40 transform -rotate-45"></div>
-      </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out;
-        }
-      `}</style>
+      </nav>
     </section>
   );
 };
 
-export default VogueCoverHero;
+export default Hero;

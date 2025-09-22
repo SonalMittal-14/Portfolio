@@ -85,13 +85,13 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-oatMilk dark:bg-darkRed">
+    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-redWine dark:text-silk mb-4">
-            My Projects
+          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-serif">
+            Portfolio
           </h2>
-            <p className="text-lg text-redWine/70 dark:text-silk/70 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Here are some of the projects I&apos;ve worked on. Each one represents a unique challenge and learning opportunity.
             </p>
         </div>
@@ -100,7 +100,7 @@ const Projects: React.FC = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-rubyRed/20 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-roseQuartz/20 dark:border-silk/20"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200 dark:border-gray-700"
             >
               {/* Project Image */}
               <div className="relative h-48 w-full">
@@ -115,10 +115,10 @@ const Projects: React.FC = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-redWine dark:text-silk mb-3">
+                <h3 className="text-xl font-semibold text-black dark:text-white mb-3 font-serif">
                   {project.title}
                 </h3>
-                <p className="text-redWine/70 dark:text-silk/70 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
 
@@ -127,7 +127,7 @@ const Projects: React.FC = () => {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-roseQuartz dark:bg-greyBeige text-redWine dark:text-silk text-xs rounded-md"
+                      className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md"
                     >
                       {tech}
                     </span>
@@ -151,7 +151,7 @@ const Projects: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center px-4 py-2 border border-redWine dark:border-silk text-redWine dark:text-silk text-sm font-medium rounded-lg hover:bg-roseQuartz dark:hover:bg-greyBeige/20 transition-colors duration-200"
+                      className="flex-1 text-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
                     >
                       GitHub
                     </a>
@@ -164,7 +164,7 @@ const Projects: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <p className="text-lg text-redWine/70 dark:text-silk/70 mb-6">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Interested in working together?
           </p>
           <a
