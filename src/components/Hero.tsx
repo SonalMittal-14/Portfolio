@@ -62,9 +62,9 @@ const Hero = () => {
               
               {/* Editorial Header Line */}
               <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <div className="w-24 h-px bg-gradient-to-r from-amber-300 to-transparent mb-8"></div>
-                <p className="text-amber-200 text-sm tracking-[0.3em] font-light uppercase" style={{fontFamily: 'Times New Roman, serif'}}>
-                  PORTFOLIO • 2025
+                <div className="w-24 h-px bg-gradient-to-r from-red-300 to-transparent mb-8"></div>
+                <p className="text-red-200 text-sm tracking-[0.3em] font-light uppercase" style={{fontFamily: 'Times New Roman, serif'}}>
+                  PORTFOLIO
                 </p>
               </div>
 
@@ -90,20 +90,20 @@ const Hero = () => {
               {/* Elegant Divider */}
               <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}>
                 <div className="flex items-center space-x-6">
-                  <div className="w-16 h-px bg-gradient-to-r from-amber-300 to-amber-300/30"></div>
-                  <div className="w-2 h-2 bg-amber-300 rotate-45"></div>
-                  <div className="w-32 h-px bg-gradient-to-r from-amber-300/30 to-transparent"></div>
+                  <div className="w-16 h-px bg-gradient-to-r from-red-300 to-red-300/30"></div>
+                  <div className="w-2 h-2 bg-red-300 rotate-45"></div>
+                  <div className="w-32 h-px bg-gradient-to-r from-red-300/30 to-transparent"></div>
                 </div>
               </div>
               
               {/* Tagline - Fashion Editorial Style */}
               <div className={`transform transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                 <blockquote className="relative">
-                  <div className="absolute -top-6 -left-4 text-6xl text-amber-300/30" style={{fontFamily: 'Times New Roman, serif'}}>"</div>
+                  <div className="absolute -top-6 -left-4 text-6xl text-red-300/30" style={{fontFamily: 'Times New Roman, serif'}}>"</div>
                   <p className="text-stone-200 text-xl xl:text-2xl leading-relaxed italic font-light max-w-3xl pl-8" style={{fontFamily: 'Times New Roman, serif'}}>
                     Crafting AI-powered solutions with the precision of haute couture and the innovation of tomorrow's technology.
                   </p>
-                  <div className="absolute -bottom-4 right-0 text-6xl text-amber-300/30 rotate-180" style={{fontFamily: 'Times New Roman, serif'}}>"</div>
+                  <div className="absolute -bottom-4 right-0 text-6xl text-red-300/30 rotate-180" style={{fontFamily: 'Times New Roman, serif'}}>"</div>
                 </blockquote>
               </div>
               
@@ -142,11 +142,11 @@ const Hero = () => {
 
               {/* Editorial Credit */}
               <div className={`transform transition-all duration-1000 delay-1500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-                <div className="pt-16">
+                {/* <div className="pt-16">
                   <p className="text-stone-500 text-xs tracking-[0.2em] uppercase" style={{fontFamily: 'Times New Roman, serif'}}>
                     Est. • Innovative • Professional
                   </p>
-                </div>
+                </div> */}
               </div>
 
             </div>
@@ -159,11 +159,11 @@ const Hero = () => {
           <div className="absolute top-8 right-24 z-20">
             <div className={`transform transition-all duration-1200 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
               <h3 className="text-6xl xl:text-7xl font-black tracking-[0.1em] leading-none" style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif'}}>
-                <span className="block">SONAL</span>
-                <span className="block text-5xl xl:text-6xl mt-1 ml-4">MITTAL</span>
+                <span className="block">SONAL MITTAL</span>
+                {/* <span className="block text-5xl xl:text-6xl mt-1 ml-4">MITTAL</span> */}
               </h3>
               {/* Accent line under name */}
-              <div className="w-20 h-1 bg-red-600 mt-4 ml-4"></div>
+              {/* <div className="w-20 h-1 bg-red-600 mt-4 ml-4"></div> */}
             </div>
           </div>
 
