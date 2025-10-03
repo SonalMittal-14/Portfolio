@@ -49,7 +49,7 @@ const Hero = () => {
       {/* Main Hero Container */}
       <div className="flex min-h-screen">
         {/* Left Side - Content Section (55%) - Vogue Inspired */}
-        <div className="w-[55%] bg-[#3D0A05] flex items-center justify-center p-16 relative">
+        <div className="w-[55%] bg-[#3D0A05] flex items-center justify-center pt-12 pb-0 relative">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full opacity-5">
             <div className="absolute top-20 left-20 w-px h-40 bg-gradient-to-b from-white to-transparent transform rotate-12"></div>
@@ -154,7 +154,7 @@ const Hero = () => {
         </div>
 
         {/* Right Side - Image Section (45%) */}
-        <div className="w-[45%] relative">
+        <div className="w-[45%] relative h-screen">
           {/* Name overlay on image - Fashion Magazine Style */}
           <div className="absolute top-8 right-24 z-20">
             <div className={`transform transition-all duration-1200 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
