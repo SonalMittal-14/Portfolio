@@ -1,25 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Code, 
-  Brain, 
-  Database, 
-  Cloud, 
-  Smartphone, 
-  Globe, 
-  Zap, 
-  Shield,
-  Layers,
-  Cpu,
-  GitBranch,
-  Terminal
-} from 'lucide-react';
 
 const Skills = () => {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -28,227 +14,224 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'AI & Machine Learning',
-      icon: Brain,
-      color: 'from-purple-500 to-pink-500',
-      skills: [
-        { name: 'TensorFlow', level: 95, description: 'Deep learning framework for neural networks' },
-        { name: 'PyTorch', level: 90, description: 'Dynamic neural network framework' },
-        { name: 'Scikit-learn', level: 88, description: 'Machine learning library for Python' },
-        { name: 'OpenCV', level: 85, description: 'Computer vision and image processing' },
-        { name: 'Pandas', level: 92, description: 'Data manipulation and analysis' },
-        { name: 'NumPy', level: 95, description: 'Numerical computing with Python' }
-      ]
-    },
-    {
       title: 'Programming Languages',
-      icon: Code,
-      color: 'from-blue-500 to-cyan-500',
+      subtitle: 'THE FOUNDATION',
       skills: [
-        { name: 'Python', level: 98, description: 'Primary language for AI/ML development' },
-        { name: 'JavaScript', level: 92, description: 'Full-stack web development' },
-        { name: 'TypeScript', level: 88, description: 'Type-safe JavaScript development' },
-        { name: 'Java', level: 80, description: 'Enterprise application development' },
-        { name: 'C++', level: 75, description: 'High-performance computing' },
-        { name: 'SQL', level: 90, description: 'Database querying and management' }
+        { name: 'Java', level: 95 },
+        { name: 'Python', level: 92 },
+        { name: 'C++', level: 88 },
+        { name: 'HLSL', level: 85 },
+        { name: 'C#', level: 90 },
+        { name: 'SQL', level: 87 },
+        { name: 'Bash', level: 82 },
+        { name: 'JavaScript', level: 94 },
+        { name: 'TypeScript', level: 93 }
       ]
     },
     {
-      title: 'Web Technologies',
-      icon: Globe,
-      color: 'from-green-500 to-emerald-500',
+      title: 'Tools & Frameworks',
+      subtitle: 'THE ARSENAL',
       skills: [
-        { name: 'React', level: 95, description: 'Modern UI library for web apps' },
-        { name: 'Next.js', level: 90, description: 'Full-stack React framework' },
-        { name: 'Node.js', level: 85, description: 'Server-side JavaScript runtime' },
-        { name: 'Express.js', level: 88, description: 'Web application framework' },
-        { name: 'Tailwind CSS', level: 92, description: 'Utility-first CSS framework' },
-        { name: 'HTML5/CSS3', level: 95, description: 'Modern web standards' }
+        { name: 'ReactJS', level: 96 },
+        { name: 'NextJS', level: 94 },
+        { name: 'GraphQL', level: 88 },
+        { name: 'Git/Github', level: 92 },
+        { name: 'TailwindCSS', level: 95 },
+        { name: 'Unity', level: 89 },
+        { name: 'Unreal Engine', level: 86 },
+        { name: 'Visual Studio', level: 90 },
+        { name: 'VS Code', level: 97 },
+        { name: 'AWS', level: 85 },
+        { name: 'XNA Framework', level: 83 }
       ]
     },
     {
-      title: 'Cloud & DevOps',
-      icon: Cloud,
-      color: 'from-orange-500 to-red-500',
+      title: 'Technical Concepts',
+      subtitle: 'THE VISION',
       skills: [
-        { name: 'AWS', level: 85, description: 'Amazon Web Services cloud platform' },
-        { name: 'Docker', level: 88, description: 'Containerization platform' },
-        { name: 'Kubernetes', level: 75, description: 'Container orchestration' },
-        { name: 'Git', level: 95, description: 'Version control system' },
-        { name: 'CI/CD', level: 80, description: 'Continuous integration/deployment' },
-        { name: 'Linux', level: 85, description: 'Unix-like operating system' }
-      ]
-    },
-    {
-      title: 'Data & Analytics',
-      icon: Database,
-      color: 'from-indigo-500 to-purple-500',
-      skills: [
-        { name: 'PostgreSQL', level: 90, description: 'Advanced open-source database' },
-        { name: 'MongoDB', level: 85, description: 'NoSQL document database' },
-        { name: 'Redis', level: 80, description: 'In-memory data structure store' },
-        { name: 'Apache Spark', level: 75, description: 'Big data processing engine' },
-        { name: 'Jupyter', level: 92, description: 'Interactive data science notebooks' },
-        { name: 'Tableau', level: 70, description: 'Data visualization platform' }
-      ]
-    },
-    {
-      title: 'Mobile & Tools',
-      icon: Smartphone,
-      color: 'from-pink-500 to-rose-500',
-      skills: [
-        { name: 'React Native', level: 80, description: 'Cross-platform mobile development' },
-        { name: 'Flutter', level: 70, description: 'Google\'s UI toolkit' },
-        { name: 'Figma', level: 85, description: 'Collaborative design tool' },
-        { name: 'VS Code', level: 95, description: 'Code editor and IDE' },
-        { name: 'Postman', level: 88, description: 'API development and testing' },
-        { name: 'Jira', level: 80, description: 'Project management tool' }
+        { name: 'UI/UX Design', level: 93 },
+        { name: 'Cloud Computing', level: 87 },
+        { name: 'Machine Learning', level: 89 },
+        { name: 'Data Visualisation', level: 91 },
+        { name: 'Software Engineering', level: 95 },
+        { name: 'Artificial Intelligence', level: 88 },
+        { name: 'NLP', level: 86 },
+        { name: 'Web Development', level: 96 },
+        { name: 'Data Structures', level: 94 },
+        { name: 'OOP', level: 95 },
+        { name: 'Game Development', level: 90 },
+        { name: 'Game Engine', level: 87 },
+        { name: 'HCI', level: 92 },
+        { name: 'SDLC', level: 93 }
       ]
     }
   ];
 
-  if (!mounted) {
-    return (
-      <section id="skills" className="min-h-screen bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <div className="h-8 w-32 bg-slate-300 rounded animate-pulse mx-auto mb-6"></div>
-            <div className="h-16 w-64 bg-slate-300 rounded animate-pulse mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-white rounded-lg p-6 shadow-lg">
-                <div className="h-6 w-24 bg-slate-300 rounded animate-pulse mb-4"></div>
-                <div className="space-y-3">
-                  {[...Array(4)].map((_, j) => (
-                    <div key={j} className="h-4 bg-slate-200 rounded animate-pulse"></div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
+  if (!mounted) return null;
 
   return (
-    <section id="skills" className="min-h-screen bg-gray-50 py-20 relative overflow-hidden">
-      {/* Background Pattern */}
+    <section id="skills" className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Vogue-style Background Elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-px h-40 bg-gradient-to-b from-red-600 to-transparent transform rotate-12"></div>
-        <div className="absolute bottom-32 right-32 w-px h-60 bg-gradient-to-t from-red-600 to-transparent transform -rotate-12"></div>
-        <div className="absolute top-1/2 right-1/4 w-32 h-px bg-gradient-to-l from-red-600/30 to-transparent transform rotate-45"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-white"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-white"></div>
+        <div className="absolute top-0 left-1/2 w-px h-full bg-white"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        {/* Section Header */}
-        <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="text-center mb-20">
-            <div className="w-24 h-px bg-gradient-to-r from-red-600 to-red-300 mx-auto mb-6"></div>
-            <h2 className="text-6xl xl:text-7xl font-black text-[#3D0A05] tracking-tight mb-6" style={{fontFamily: 'Times New Roman, serif'}}>
+      {/* Hero Title Section */}
+      <div className={`relative z-10 pt-32 pb-20 px-8 transition-all duration-1500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="max-w-7xl mx-auto">
+          {/* Main Title - Vogue Style */}
+          <div className="text-center mb-4">
+            <div className="text-xs tracking-[0.3em] mb-6 font-light uppercase">
+              Portfolio — 2025 Edition
+            </div>
+            <h1 className="text-[12vw] md:text-[10vw] lg:text-[8rem] font-bold leading-[0.9] tracking-tighter mb-6">
               SKILLS
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed" style={{fontFamily: 'Times New Roman, serif'}}>
-              Technical expertise across the full spectrum of modern development
+            </h1>
+            <div className="w-32 h-px bg-white mx-auto mb-8"></div>
+            <p className="text-xl md:text-2xl font-light tracking-wider italic max-w-2xl mx-auto">
+              "Mastery is not a destination, but a journey of continuous evolution"
             </p>
           </div>
         </div>
+      </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <div 
-              key={category.title}
-              className={`transform transition-all duration-700 delay-${categoryIndex * 100} ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      {/* Category Navigation */}
+      <div className={`relative z-10 px-8 mb-16 transition-all duration-1500 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-center gap-12 border-t border-b border-white/20 py-6">
+            {skillCategories.map((category, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveCategory(idx)}
+                className={`text-sm tracking-[0.2em] uppercase font-light transition-all duration-500 relative group ${
+                  activeCategory === idx ? 'text-white' : 'text-white/40 hover:text-white/70'
+                }`}
+              >
+                {category.subtitle}
+                {activeCategory === idx && (
+                  <div className="absolute -bottom-6 left-0 right-0 h-px bg-white"></div>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Skills Display - Magazine Layout */}
+      <div className="relative z-10 px-8 pb-32">
+        <div className="max-w-7xl mx-auto">
+          {skillCategories.map((category, catIdx) => (
+            <div
+              key={catIdx}
+              className={`transition-all duration-700 ${
+                activeCategory === catIdx ? 'opacity-100 block' : 'opacity-0 hidden'
+              }`}
             >
-              <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 h-full group">
-                {/* Category Header */}
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${category.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <category.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#3D0A05] group-hover:text-red-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                    {category.title}
-                  </h3>
+              {/* Category Title */}
+              <div className="mb-16 text-center">
+                <h2 className="text-6xl md:text-7xl font-bold tracking-tight mb-4">
+                  {category.title}
+                </h2>
+                <div className="text-sm tracking-[0.3em] text-white/60 uppercase">
+                  {category.skills.length} Specializations
                 </div>
+              </div>
 
-                {/* Skills List */}
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div 
-                      key={skill.name}
-                      className="group/skill relative"
-                      onMouseEnter={() => setHoveredSkill(skill.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-gray-700 group-hover/skill:text-[#3D0A05] transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
+              {/* Skills Grid - Vogue Magazine Style */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                {category.skills.map((skill, idx) => (
+                  <div
+                    key={idx}
+                    className={`group transition-all duration-700 delay-${idx * 50}`}
+                    style={{ animationDelay: `${idx * 50}ms` }}
+                  >
+                    {/* Skill Card */}
+                    <div className="relative border border-white/10 p-8 hover:border-white/40 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                      {/* Skill Number */}
+                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-white text-black flex items-center justify-center text-xs font-bold">
+                        {String(idx + 1).padStart(2, '0')}
+                      </div>
+
+                      {/* Skill Name */}
+                      <div className="mb-6">
+                        <h3 className="text-2xl font-light tracking-wide mb-2">
                           {skill.name}
-                        </span>
-                        <span className="text-sm text-gray-500 font-mono">{skill.level}%</span>
-                      </div>
-                      
-                      {/* Progress Bar */}
-                      <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                        <div 
-                          className={`h-2 bg-gradient-to-r ${category.color} rounded-full transition-all duration-1000 delay-${1000 + skillIndex * 100} group-hover/skill:shadow-lg`}
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
+                        </h3>
                       </div>
 
-                      {/* Tooltip */}
-                      {hoveredSkill === skill.name && (
-                        <div className="absolute -top-12 left-0 bg-[#3D0A05] text-white text-xs px-3 py-2 rounded-lg shadow-lg z-10 whitespace-nowrap">
-                          {skill.description}
-                          <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#3D0A05]"></div>
+                      {/* Progress Bar - Minimalist */}
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center text-xs tracking-wider">
+                          <span className="uppercase text-white/60">Proficiency</span>
+                          <span className="font-bold">{skill.level}%</span>
                         </div>
-                      )}
+                        <div className="relative h-px bg-white/20 overflow-hidden">
+                          <div
+                            className="absolute left-0 top-0 h-full bg-white transition-all duration-1000 ease-out"
+                            style={{ 
+                              width: `${skill.level}%`,
+                              transitionDelay: `${idx * 100}ms`
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+
+                      {/* Decorative Element */}
+                      <div className="absolute -bottom-2 -right-2 w-16 h-16 border border-white/10 group-hover:border-white/30 transition-all duration-500 -z-10"></div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
-        </div>
 
-        {/* Bottom Stats */}
-        <div className={`mt-20 transform transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="bg-white rounded-2xl shadow-xl p-12">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-              <div className="group">
-                <div className="text-4xl font-bold text-[#3D0A05] mb-2 group-hover:text-red-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                  50+
+          {/* Stats Section - Editorial Style */}
+          <div className={`mt-32 transition-all duration-1500 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="border-t border-b border-white/20 py-16">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div className="text-center group">
+                  <div className="text-6xl md:text-7xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500">
+                    50<span className="text-3xl">+</span>
+                  </div>
+                  <div className="text-xs tracking-[0.3em] uppercase text-white/60">
+                    Technologies
+                  </div>
                 </div>
-                <div className="text-gray-600 text-sm uppercase tracking-wider" style={{fontFamily: 'Times New Roman, serif'}}>
-                  Technologies
+                <div className="text-center group">
+                  <div className="text-6xl md:text-7xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500">
+                    5<span className="text-3xl">+</span>
+                  </div>
+                  <div className="text-xs tracking-[0.3em] uppercase text-white/60">
+                    Years
+                  </div>
                 </div>
-              </div>
-              <div className="group">
-                <div className="text-4xl font-bold text-[#3D0A05] mb-2 group-hover:text-red-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                  5+
+                <div className="text-center group">
+                  <div className="text-6xl md:text-7xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500">
+                    100<span className="text-3xl">+</span>
+                  </div>
+                  <div className="text-xs tracking-[0.3em] uppercase text-white/60">
+                    Projects
+                  </div>
                 </div>
-                <div className="text-gray-600 text-sm uppercase tracking-wider" style={{fontFamily: 'Times New Roman, serif'}}>
-                  Years Experience
-                </div>
-              </div>
-              <div className="group">
-                <div className="text-4xl font-bold text-[#3D0A05] mb-2 group-hover:text-red-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                  100+
-                </div>
-                <div className="text-gray-600 text-sm uppercase tracking-wider" style={{fontFamily: 'Times New Roman, serif'}}>
-                  Projects Completed
-                </div>
-              </div>
-              <div className="group">
-                <div className="text-4xl font-bold text-[#3D0A05] mb-2 group-hover:text-red-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                  15+
-                </div>
-                <div className="text-gray-600 text-sm uppercase tracking-wider" style={{fontFamily: 'Times New Roman, serif'}}>
-                  Certifications
+                <div className="text-center group">
+                  <div className="text-6xl md:text-7xl font-bold mb-4 group-hover:scale-110 transition-transform duration-500">
+                    15<span className="text-3xl">+</span>
+                  </div>
+                  <div className="text-xs tracking-[0.3em] uppercase text-white/60">
+                    Certifications
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Footer Quote */}
+          <div className="mt-20 text-center">
+            <p className="text-sm tracking-[0.3em] uppercase text-white/40">
+              Crafted with precision • Designed for impact
+            </p>
           </div>
         </div>
       </div>
