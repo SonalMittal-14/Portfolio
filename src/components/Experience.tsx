@@ -495,7 +495,7 @@ const Experience = () => {
         )}
 
         {/* Bottom CTA - Editorial Style */}
-        <div className={`mt-32 pt-20 border-t transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{borderColor: '#7F1F0E'}}>
+        {/* <div className={`mt-32 pt-20 border-t transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{borderColor: '#7F1F0E'}}>
           <div className="text-center space-y-10">
             <div className="inline-block">
               <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}>
@@ -532,7 +532,7 @@ const Experience = () => {
               ></div>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Fade in animation keyframes */}
