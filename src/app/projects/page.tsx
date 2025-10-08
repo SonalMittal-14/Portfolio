@@ -21,6 +21,7 @@ const ProjectsPage = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -136,24 +137,11 @@ const ProjectsPage = () => {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen" style={{backgroundColor: '#3D0A05'}}>
-        <div className="container mx-auto px-8 py-20">
-          <div className="text-center mb-16">
-            <div className="h-16 w-64 bg-gray-300 rounded animate-pulse mx-auto mb-6"></div>
-            <div className="h-6 w-96 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-gray-800 rounded-xl p-6 animate-pulse">
-                <div className="h-48 bg-gray-700 rounded mb-4"></div>
-                <div className="h-6 bg-gray-700 rounded mb-3"></div>
-                <div className="space-y-2">
-                  <div className="h-4 bg-gray-700 rounded"></div>
-                  <div className="h-4 bg-gray-700 rounded"></div>
-                  <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                </div>
-              </div>
-            ))}
+      <div className="min-h-screen relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
+        <div className="container mx-auto px-8 py-24">
+          <div className="text-center mb-20">
+            <div className="h-20 bg-opacity-10 bg-white rounded animate-pulse mx-auto max-w-xl mb-8"></div>
+            <div className="h-6 bg-opacity-5 bg-white rounded animate-pulse mx-auto max-w-2xl"></div>
           </div>
         </div>
       </div>
@@ -161,98 +149,239 @@ const ProjectsPage = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#3D0A05'}}>
-      {/* Header */}
-      <div className="container mx-auto px-8 py-20">
-        <div className="text-center mb-16">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6" style={{fontFamily: 'Playfair Display, serif'}}>
+    <div className="min-h-screen relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl" style={{backgroundColor: '#7F1F0E'}}></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-5 blur-3xl" style={{backgroundColor: '#AC746C'}}></div>
+      <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full opacity-3 blur-3xl" style={{backgroundColor: '#7F1F0E'}}></div>
+
+      <div className="container mx-auto px-8 py-24 relative z-10">
+        {/* Header - Vogue Editorial Style */}
+        <div className="text-center mb-24">
+          <div className="inline-block mb-8">
+            <div className="h-px w-20 mx-auto mb-8" style={{backgroundColor: '#DAC1B1'}}></div>
+            <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif'}}>
+              Complete Collection
+            </p>
+          </div>
+          
+          <h1 
+            className="text-7xl md:text-8xl lg:text-9xl font-light mb-10 tracking-tight"
+            style={{color: '#DAC1B1', fontFamily: 'Playfair Display, Times New Roman, serif'}}
+          >
             All Projects
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto" style={{fontFamily: 'Times New Roman, serif'}}>
-            Explore my complete portfolio of projects across different technologies and domains
+          
+          <p className="text-lg md:text-xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed" style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif', opacity: 0.8}}>
+            Explore the complete portfolio of digital experiences across different technologies and creative domains
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        {/* Category Filter - Minimalist Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-24 px-4">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-white text-gray-800'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-              }`}
+              className="relative px-6 py-3 text-xs tracking-[0.25em] uppercase transition-all duration-500 overflow-hidden group"
               style={{fontFamily: 'Times New Roman, serif'}}
             >
-              {category}
+              {/* Background animation */}
+              <div 
+                className="absolute inset-0 transition-transform duration-500 ease-out origin-bottom"
+                style={{
+                  backgroundColor: selectedCategory === category ? '#DAC1B1' : 'transparent',
+                  transform: selectedCategory === category ? 'scaleY(1)' : 'scaleY(0)'
+                }}
+              ></div>
+              
+              {/* Border */}
+              <div 
+                className="absolute inset-0 border transition-colors duration-300"
+                style={{
+                  borderColor: selectedCategory === category ? '#DAC1B1' : '#7F1F0E'
+                }}
+              ></div>
+
+              {/* Text */}
+              <span 
+                className="relative z-10 transition-colors duration-300"
+                style={{
+                  color: selectedCategory === category ? '#3D0A05' : '#DAC1B1'
+                }}
+              >
+                {category}
+              </span>
             </button>
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        {/* Projects Grid - Magazine Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20">
+          {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-700 hover:border-gray-600 group"
+              className="group relative"
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              style={{
+                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+              }}
             >
-              {/* Project Image */}
-              <div className="relative h-48 w-full">
-                <Image
-                  src={theme === 'dark' ? `/images/dark/${project.image}` : `/images/light/${project.image}`}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                {project.featured && (
-                  <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                    Featured
+              {/* Featured badge */}
+              {project.featured && (
+                <div 
+                  className="absolute -top-3 -left-3 z-20 text-xs tracking-[0.2em] uppercase px-4 py-2 border"
+                  style={{
+                    color: '#DAC1B1',
+                    borderColor: '#7F1F0E',
+                    backgroundColor: '#3D0A05',
+                    fontFamily: 'Times New Roman, serif'
+                  }}
+                >
+                  Featured
+                </div>
+              )}
+
+              {/* Project Image Container */}
+              <div className="relative aspect-[3/4] overflow-hidden mb-6">
+                {/* Decorative frame */}
+                <div 
+                  className="absolute inset-0 border transition-all duration-700 ease-out z-10 pointer-events-none"
+                  style={{
+                    borderColor: hoveredId === project.id ? '#DAC1B1' : '#7F1F0E',
+                    borderWidth: '1px',
+                    transform: hoveredId === project.id ? 'scale(1.02)' : 'scale(1)'
+                  }}
+                ></div>
+
+                {/* Image */}
+                <div className="relative w-full h-full overflow-hidden" style={{backgroundColor: '#7F1F0E'}}>
+                  <Image
+                    src={theme === 'dark' ? `/images/dark/${project.image}` : `/images/light/${project.image}`}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out"
+                    style={{
+                      transform: hoveredId === project.id ? 'scale(1.08)' : 'scale(1)',
+                      filter: 'grayscale(20%) contrast(1.1)'
+                    }}
+                  />
+                  
+                  {/* Gradient overlay */}
+                  <div 
+                    className="absolute inset-0 transition-opacity duration-500"
+                    style={{
+                      background: 'linear-gradient(to bottom, rgba(61, 10, 5, 0) 0%, rgba(61, 10, 5, 0.6) 100%)',
+                      opacity: hoveredId === project.id ? 0.8 : 0.6
+                    }}
+                  ></div>
+
+                  {/* Project number overlay */}
+                  <div 
+                    className="absolute bottom-4 right-4 text-6xl font-light transition-opacity duration-500"
+                    style={{
+                      color: '#DAC1B1',
+                      fontFamily: 'Playfair Display, Times New Roman, serif',
+                      opacity: hoveredId === project.id ? 0.15 : 0.08
+                    }}
+                  >
+                    {String(project.id).padStart(2, '0')}
                   </div>
-                )}
+                </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-semibold text-white" style={{fontFamily: 'Times New Roman, serif'}}>
+              <div className="space-y-4">
+                {/* Category and Title */}
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <div className="h-px w-8" style={{backgroundColor: '#AC746C'}}></div>
+                    <span 
+                      className="text-xs tracking-[0.25em] uppercase"
+                      style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}
+                    >
+                      {project.category}
+                    </span>
+                  </div>
+
+                  <h3 
+                    className="text-2xl md:text-3xl font-light leading-tight tracking-tight transition-all duration-300"
+                    style={{
+                      color: '#DAC1B1',
+                      fontFamily: 'Playfair Display, Times New Roman, serif',
+                      opacity: hoveredId === project.id ? 1 : 0.9
+                    }}
+                  >
                     {project.title}
                   </h3>
-                  <span className="text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded">
-                    {project.category}
-                  </span>
                 </div>
-                
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed" style={{fontFamily: 'Times New Roman, serif'}}>
+
+                {/* Description */}
+                <p 
+                  className="text-sm font-light leading-relaxed tracking-wide"
+                  style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif', opacity: 0.7}}
+                >
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-md hover:bg-gray-600 transition-colors duration-200"
-                      style={{fontFamily: 'Times New Roman, serif'}}
+                      className="text-xs tracking-wider uppercase px-3 py-1 border transition-all duration-300"
+                      style={{
+                        color: '#DAC1B1',
+                        borderColor: '#7F1F0E',
+                        fontFamily: 'Times New Roman, serif',
+                        backgroundColor: hoveredId === project.id ? 'rgba(127, 31, 14, 0.2)' : 'transparent'
+                      }}
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 3 && (
+                    <span
+                      className="text-xs tracking-wider uppercase px-3 py-1"
+                      style={{
+                        color: '#AC746C',
+                        fontFamily: 'Times New Roman, serif'
+                      }}
+                    >
+                      +{project.technologies.length - 3}
+                    </span>
+                  )}
                 </div>
 
-                {/* Project Links */}
-                <div className="flex gap-3">
+                {/* Action Buttons */}
+                <div className="flex gap-4 pt-4">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center px-4 py-2 bg-white text-gray-800 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200"
-                      style={{fontFamily: 'Times New Roman, serif'}}
+                      className="group/btn relative overflow-hidden flex-1"
                     >
-                      Live Demo
+                      <span 
+                        className="relative z-10 inline-flex items-center justify-center w-full gap-2 text-xs tracking-[0.2em] uppercase px-4 py-3 transition-colors duration-300"
+                        style={{
+                          color: hoveredId === project.id ? '#3D0A05' : '#DAC1B1',
+                          fontFamily: 'Times New Roman, serif'
+                        }}
+                      >
+                        View
+                        <svg className="w-3 h-3 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                      <div 
+                        className="absolute inset-0 transition-transform duration-500 ease-out origin-left"
+                        style={{
+                          backgroundColor: '#DAC1B1',
+                          transform: hoveredId === project.id ? 'scaleX(1)' : 'scaleX(0)'
+                        }}
+                      ></div>
                     </a>
                   )}
                   {project.githubUrl && (
@@ -260,8 +389,12 @@ const ProjectsPage = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center px-4 py-2 border border-gray-600 text-gray-300 text-sm font-medium rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-200"
-                      style={{fontFamily: 'Times New Roman, serif'}}
+                      className="text-xs tracking-[0.2em] uppercase px-4 py-3 border transition-all duration-300 hover:scale-105"
+                      style={{
+                        color: '#DAC1B1',
+                        borderColor: '#7F1F0E',
+                        fontFamily: 'Times New Roman, serif'
+                      }}
                     >
                       GitHub
                     </a>
@@ -272,20 +405,34 @@ const ProjectsPage = () => {
           ))}
         </div>
 
-        {/* Back to Home */}
-        <div className="text-center mt-16">
+        {/* Back to Home - Editorial Style */}
+        <div className="text-center mt-32 pt-20 border-t" style={{borderColor: '#7F1F0E'}}>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-white hover:text-gray-300 transition-colors duration-200"
-            style={{fontFamily: 'Times New Roman, serif'}}
+            className="group/link inline-flex items-center gap-4 text-sm tracking-[0.25em] uppercase transition-all duration-300 hover:gap-6"
+            style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif'}}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            <svg className="w-5 h-5 transition-transform duration-300 group-hover/link:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Home
+            Return to Home
           </Link>
         </div>
       </div>
+
+      {/* Fade in animation keyframes */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };
