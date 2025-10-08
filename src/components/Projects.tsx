@@ -17,6 +17,7 @@ interface Project {
 const Projects: React.FC = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -24,30 +25,11 @@ const Projects: React.FC = () => {
 
   if (!mounted) {
     return (
-      <section id="projects" className="py-20 bg-oatMilk dark:bg-darkRed">
+      <section id="projects" className="py-32 relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-redWine dark:text-silk mb-4">
-              My Projects
-            </h2>
-            <p className="text-lg text-redWine/70 dark:text-silk/70 max-w-2xl mx-auto">
-              Here are some of the projects I&apos;ve worked on. Each one represents a unique challenge and learning opportunity.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white dark:bg-rubyRed/20 rounded-xl shadow-lg overflow-hidden border border-roseQuartz/20 dark:border-silk/20">
-                <div className="h-48 w-full bg-roseQuartz dark:bg-greyBeige animate-pulse"></div>
-                <div className="p-6">
-                  <div className="h-6 bg-roseQuartz dark:bg-greyBeige rounded mb-3 animate-pulse"></div>
-                  <div className="space-y-2 mb-4">
-                    <div className="h-4 bg-roseQuartz dark:bg-greyBeige rounded animate-pulse"></div>
-                    <div className="h-4 bg-roseQuartz dark:bg-greyBeige rounded animate-pulse"></div>
-                    <div className="h-4 bg-roseQuartz dark:bg-greyBeige rounded w-3/4 animate-pulse"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="text-center mb-20">
+            <div className="h-16 bg-opacity-20 bg-white rounded mb-6 animate-pulse mx-auto max-w-md"></div>
+            <div className="h-4 bg-opacity-10 bg-white rounded animate-pulse mx-auto max-w-xl"></div>
           </div>
         </div>
       </section>
@@ -85,65 +67,161 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-serif">
+    <section id="projects" className="py-32 relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-5 blur-3xl" style={{backgroundColor: '#7F1F0E'}}></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full opacity-5 blur-3xl" style={{backgroundColor: '#AC746C'}}></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header - Vogue Style */}
+        <div className="text-center mb-24">
+          <div className="inline-block mb-6">
+            <div className="h-px w-16 mx-auto mb-6" style={{backgroundColor: '#DAC1B1'}}></div>
+            <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif'}}>
+              Featured Work
+            </p>
+          </div>
+          <h2 
+            className="text-6xl md:text-7xl lg:text-8xl font-light mb-8 tracking-tight"
+            style={{color: '#DAC1B1', fontFamily: 'Playfair Display, Times New Roman, serif'}}
+          >
             Portfolio
           </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Here are some of the projects I&apos;ve worked on. Each one represents a unique challenge and learning opportunity.
-            </p>
+          <p className="text-lg md:text-xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed" style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif', opacity: 0.8}}>
+            A curated collection of digital experiences, each crafted with precision and passion
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+        {/* Projects Grid - Editorial Layout */}
+        <div className="space-y-32">
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200 dark:border-gray-700"
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-20 items-center group`}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Project Image */}
-              <div className="relative h-48 w-full">
-                <Image
-                  src={theme === 'dark' ? `/images/dark/${project.image}` : `/images/light/${project.image}`}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              {/* Project Image - Magazine Style */}
+              <div className="w-full lg:w-1/2 relative">
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  {/* Decorative frame */}
+                  <div 
+                    className="absolute inset-0 border transition-all duration-700 ease-out z-10"
+                    style={{
+                      borderColor: hoveredId === project.id ? '#DAC1B1' : '#7F1F0E',
+                      borderWidth: '1px',
+                      transform: hoveredId === project.id ? 'scale(1.02)' : 'scale(1)'
+                    }}
+                  ></div>
+                  
+                  {/* Image container */}
+                  <div className="relative w-full h-full overflow-hidden" style={{backgroundColor: '#7F1F0E'}}>
+                    <Image
+                      src={theme === 'dark' ? `/images/dark/${project.image}` : `/images/light/${project.image}`}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out"
+                      style={{
+                        transform: hoveredId === project.id ? 'scale(1.05)' : 'scale(1)',
+                        filter: 'grayscale(20%) contrast(1.1)'
+                      }}
+                    />
+                    {/* Gradient overlay */}
+                    <div 
+                      className="absolute inset-0 transition-opacity duration-500"
+                      style={{
+                        background: 'linear-gradient(to bottom, rgba(61, 10, 5, 0) 0%, rgba(61, 10, 5, 0.4) 100%)',
+                        opacity: hoveredId === project.id ? 0.7 : 0.5
+                      }}
+                    ></div>
+                  </div>
+
+                  {/* Project number overlay */}
+                  <div 
+                    className="absolute top-8 right-8 text-9xl font-light opacity-10 transition-opacity duration-500"
+                    style={{color: '#DAC1B1', fontFamily: 'Playfair Display, Times New Roman, serif'}}
+                  >
+                    0{project.id}
+                  </div>
+                </div>
               </div>
 
-              {/* Project Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-black dark:text-white mb-3 font-serif">
+              {/* Project Content - Editorial Style */}
+              <div className="w-full lg:w-1/2 space-y-8">
+                {/* Category line */}
+                <div className="flex items-center gap-4">
+                  <div className="h-px w-12" style={{backgroundColor: '#AC746C'}}></div>
+                  <span className="text-xs tracking-[0.3em] uppercase" style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}>
+                    Project {String(project.id).padStart(2, '0')}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 
+                  className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight transition-all duration-300"
+                  style={{
+                    color: hoveredId === project.id ? '#DAC1B1' : '#DAC1B1',
+                    fontFamily: 'Playfair Display, Times New Roman, serif',
+                    opacity: hoveredId === project.id ? 1 : 0.9
+                  }}
+                >
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+
+                {/* Description */}
+                <p 
+                  className="text-base md:text-lg font-light leading-relaxed tracking-wide"
+                  style={{color: '#DAC1B1', fontFamily: 'Times New Roman, serif', opacity: 0.7}}
+                >
                   {project.description}
                 </p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
+                {/* Technologies - Minimal tags */}
+                <div className="flex flex-wrap gap-3 pt-4">
+                  {project.technologies.map((tech, i) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md"
+                      className="text-xs tracking-wider uppercase px-4 py-2 border transition-all duration-300 hover:scale-105"
+                      style={{
+                        color: '#DAC1B1',
+                        borderColor: '#7F1F0E',
+                        fontFamily: 'Times New Roman, serif',
+                        backgroundColor: hoveredId === project.id ? 'rgba(127, 31, 14, 0.2)' : 'transparent'
+                      }}
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Project Links */}
-                <div className="flex gap-3">
+                {/* Action buttons - Minimalist */}
+                <div className="flex gap-6 pt-8">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center px-4 py-2 bg-redWine dark:bg-rubyRed text-white text-sm font-medium rounded-lg hover:bg-redWine/90 dark:hover:bg-rubyRed/90 transition-colors duration-200"
+                      className="group/btn relative overflow-hidden"
                     >
-                      Live Demo
+                      <span 
+                        className="relative z-10 inline-flex items-center gap-3 text-sm tracking-[0.2em] uppercase px-8 py-4 transition-colors duration-300"
+                        style={{
+                          color: hoveredId === project.id ? '#3D0A05' : '#DAC1B1',
+                          fontFamily: 'Times New Roman, serif'
+                        }}
+                      >
+                        View Project
+                        <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                      <div 
+                        className="absolute inset-0 transition-transform duration-500 ease-out origin-left"
+                        style={{
+                          backgroundColor: '#DAC1B1',
+                          transform: hoveredId === project.id ? 'scaleX(1)' : 'scaleX(0)'
+                        }}
+                      ></div>
                     </a>
                   )}
                   {project.githubUrl && (
@@ -151,7 +229,12 @@ const Projects: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                      className="text-sm tracking-[0.2em] uppercase px-8 py-4 border transition-all duration-300 hover:scale-105"
+                      style={{
+                        color: '#DAC1B1',
+                        borderColor: '#7F1F0E',
+                        fontFamily: 'Times New Roman, serif'
+                      }}
                     >
                       GitHub
                     </a>
@@ -162,16 +245,35 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-            Interested in working together?
+        {/* Call to Action - Editorial Style */}
+        <div className="text-center mt-40 pt-20 border-t" style={{borderColor: '#7F1F0E'}}>
+          <div className="inline-block mb-8">
+            <p className="text-xs tracking-[0.3em] uppercase mb-2" style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}>
+              Let's Create Together
+            </p>
+            <div className="h-px w-24 mx-auto" style={{backgroundColor: '#AC746C'}}></div>
+          </div>
+          
+          <p 
+            className="text-3xl md:text-4xl font-light mb-12 tracking-tight"
+            style={{color: '#DAC1B1', fontFamily: 'Playfair Display, Times New Roman, serif'}}
+          >
+            Ready to bring your vision to life?
           </p>
+          
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-redWine hover:bg-redWine/90 dark:bg-rubyRed dark:hover:bg-rubyRed/90 transition-colors duration-200"
+            className="group/cta inline-flex items-center gap-4 text-base tracking-[0.2em] uppercase px-12 py-5 border transition-all duration-500 hover:scale-105"
+            style={{
+              color: '#DAC1B1',
+              borderColor: '#DAC1B1',
+              fontFamily: 'Times New Roman, serif'
+            }}
           >
-            Let&apos;s Talk
+            Start a Conversation
+            <svg className="w-5 h-5 transition-transform duration-300 group-hover/cta:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
       </div>
