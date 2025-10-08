@@ -36,7 +36,7 @@ const Projects: React.FC = () => {
     );
   }
 
-  const projects: Project[] = [
+  const allProjects: Project[] = [
     {
       id: 1,
       title: 'E-Commerce Platform',
@@ -63,8 +63,38 @@ const Projects: React.FC = () => {
       image: 'project3.jpg',
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com/example'
+    },
+    {
+      id: 4,
+      title: 'AI Chat Application',
+      description: 'An intelligent chat application powered by OpenAI GPT, featuring real-time messaging, context awareness, and multi-language support.',
+      technologies: ['Next.js', 'OpenAI API', 'WebSocket', 'PostgreSQL', 'Tailwind CSS'],
+      image: 'project1.jpg',
+      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/example'
+    },
+    {
+      id: 5,
+      title: 'Blockchain Voting System',
+      description: 'A secure and transparent voting system built on blockchain technology, ensuring immutability and verifiability of votes.',
+      technologies: ['Solidity', 'Web3.js', 'React', 'Ethereum', 'MetaMask'],
+      image: 'project2.jpg',
+      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/example'
+    },
+    {
+      id: 6,
+      title: 'Machine Learning Dashboard',
+      description: 'A comprehensive dashboard for visualizing machine learning model performance, training metrics, and data insights.',
+      technologies: ['Python', 'TensorFlow', 'D3.js', 'Flask', 'MongoDB'],
+      image: 'project3.jpg',
+      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/example'
     }
   ];
+
+  // Show only first 3 projects on main page
+  const projects = allProjects.slice(0, 3);
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
@@ -243,6 +273,24 @@ const Projects: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* More Projects Button */}
+        <div className="text-center mt-20">
+          <a
+            href="/projects"
+            className="group/more inline-flex items-center gap-4 text-base tracking-[0.2em] uppercase px-12 py-5 border transition-all duration-500 hover:scale-105"
+            style={{
+              color: '#DAC1B1',
+              borderColor: '#7F1F0E',
+              fontFamily: 'Times New Roman, serif'
+            }}
+          >
+            View All Projects
+            <svg className="w-5 h-5 transition-transform duration-300 group-hover/more:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
 
         {/* Call to Action - Editorial Style */}
