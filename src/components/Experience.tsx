@@ -18,6 +18,7 @@ const Experience = () => {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -122,24 +123,11 @@ const Experience = () => {
 
   if (!mounted) {
     return (
-      <section id="experience" className="min-h-screen bg-white py-20">
+      <section id="experience" className="min-h-screen py-32 relative overflow-hidden" style={{backgroundColor: '#F9F6EE'}}>
         <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <div className="h-8 w-32 bg-slate-300 rounded animate-pulse mx-auto mb-6"></div>
-            <div className="h-16 w-64 bg-slate-300 rounded animate-pulse mx-auto"></div>
-          </div>
-          <div className="space-y-8">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="bg-gray-50 rounded-lg p-6">
-                <div className="h-6 w-48 bg-slate-300 rounded animate-pulse mb-4"></div>
-                <div className="h-4 w-32 bg-slate-200 rounded animate-pulse mb-2"></div>
-                <div className="space-y-2">
-                  {[...Array(3)].map((_, j) => (
-                    <div key={j} className="h-3 bg-slate-200 rounded animate-pulse"></div>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="text-center mb-20">
+            <div className="h-20 bg-opacity-10 bg-gray-800 rounded animate-pulse mx-auto max-w-xl mb-8"></div>
+            <div className="h-6 bg-opacity-5 bg-gray-800 rounded animate-pulse mx-auto max-w-2xl"></div>
           </div>
         </div>
       </section>
@@ -147,52 +135,76 @@ const Experience = () => {
   }
 
   return (
-    <section id="experience" className="min-h-screen bg-white py-20 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-20 w-px h-40 bg-gradient-to-b from-red-600 to-transparent transform rotate-12"></div>
-        <div className="absolute bottom-32 left-32 w-px h-60 bg-gradient-to-t from-red-600 to-transparent transform -rotate-12"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-px bg-gradient-to-r from-red-600/30 to-transparent transform -rotate-45"></div>
-      </div>
+    <section id="experience" className="min-h-screen py-32 relative overflow-hidden" style={{backgroundColor: '#F9F6EE'}}>
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-10 blur-3xl" style={{backgroundColor: '#7F1F0E'}}></div>
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full opacity-10 blur-3xl" style={{backgroundColor: '#AC746C'}}></div>
+      <div className="absolute top-1/2 right-1/4 w-64 h-64 rounded-full opacity-5 blur-3xl" style={{backgroundColor: '#3D0A05'}}></div>
 
       <div className="max-w-7xl mx-auto px-8 relative z-10">
-        {/* Section Header */}
+        {/* Section Header - Vogue Editorial Style */}
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="text-center mb-20">
-            <div className="w-24 h-px bg-gradient-to-r from-red-600 to-red-300 mx-auto mb-6"></div>
-            <h2 className="text-6xl xl:text-7xl font-black text-[#3D0A05] tracking-tight mb-6" style={{fontFamily: 'Times New Roman, serif'}}>
-              EXPERIENCE
+          <div className="text-center mb-24">
+            <div className="inline-block mb-8">
+              <div className="h-px w-20 mx-auto mb-8" style={{backgroundColor: '#7F1F0E'}}></div>
+              <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{color: '#7F1F0E', fontFamily: 'Times New Roman, serif'}}>
+                Professional Journey
+              </p>
+            </div>
+            
+            <h2 
+              className="text-7xl md:text-8xl lg:text-9xl font-light mb-10 tracking-tight leading-none"
+              style={{color: '#3D0A05', fontFamily: 'Playfair Display, Times New Roman, serif'}}
+            >
+              Experience
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed" style={{fontFamily: 'Times New Roman, serif'}}>
-              A journey through innovation, leadership, and technical excellence
+            
+            <p className="text-lg md:text-xl font-light tracking-wide max-w-3xl mx-auto leading-relaxed" style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif', opacity: 0.7}}>
+              A carefully curated chronicle of innovation, leadership, and technical mastery
             </p>
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className={`flex justify-center mb-16 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="bg-gray-100 rounded-2xl p-2 flex space-x-2">
+        {/* Tab Navigation - Minimalist Design */}
+        <div className={`flex justify-center mb-20 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <div className="inline-flex border" style={{borderColor: '#7F1F0E'}}>
             <button
               onClick={() => setActiveTab(0)}
-              className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 ${
-                activeTab === 0 
-                  ? 'bg-[#3D0A05] text-white shadow-lg' 
-                  : 'text-gray-600 hover:text-[#3D0A05] hover:bg-white'
-              }`}
+              className="relative px-12 py-5 text-sm tracking-[0.25em] uppercase transition-all duration-500 overflow-hidden group"
               style={{fontFamily: 'Times New Roman, serif'}}
             >
-              Work Experience
+              <div 
+                className="absolute inset-0 transition-transform duration-500 ease-out origin-bottom"
+                style={{
+                  backgroundColor: activeTab === 0 ? '#3D0A05' : 'transparent',
+                  transform: activeTab === 0 ? 'scaleY(1)' : 'scaleY(0)'
+                }}
+              ></div>
+              <span 
+                className="relative z-10 transition-colors duration-300"
+                style={{color: activeTab === 0 ? '#DAC1B1' : '#3D0A05'}}
+              >
+                Work Experience
+              </span>
             </button>
             <button
               onClick={() => setActiveTab(1)}
-              className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 ${
-                activeTab === 1 
-                  ? 'bg-[#3D0A05] text-white shadow-lg' 
-                  : 'text-gray-600 hover:text-[#3D0A05] hover:bg-white'
-              }`}
-              style={{fontFamily: 'Times New Roman, serif'}}
+              className="relative px-12 py-5 text-sm tracking-[0.25em] uppercase transition-all duration-500 overflow-hidden border-l group"
+              style={{fontFamily: 'Times New Roman, serif', borderColor: '#7F1F0E'}}
             >
-              Education
+              <div 
+                className="absolute inset-0 transition-transform duration-500 ease-out origin-bottom"
+                style={{
+                  backgroundColor: activeTab === 1 ? '#3D0A05' : 'transparent',
+                  transform: activeTab === 1 ? 'scaleY(1)' : 'scaleY(0)'
+                }}
+              ></div>
+              <span 
+                className="relative z-10 transition-colors duration-300"
+                style={{color: activeTab === 1 ? '#DAC1B1' : '#3D0A05'}}
+              >
+                Education
+              </span>
             </button>
           </div>
         </div>
@@ -200,83 +212,153 @@ const Experience = () => {
         {/* Work Experience Tab */}
         {activeTab === 0 && (
           <div className={`transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="space-y-12">
+            <div className="space-y-24">
               {experiences.map((exp, index) => (
-                <div key={index} className={`transform transition-all duration-700 delay-${index * 100} ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
-                  <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 border-l-4 border-red-600 group">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-4 mb-4">
-                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${exp.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                            <Building2 className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <h3 className="text-2xl font-bold text-[#3D0A05] group-hover:text-red-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {exp.position}
-                            </h3>
-                            <p className="text-xl text-gray-700 font-medium" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {exp.company}
-                            </p>
-                          </div>
+                <div 
+                  key={index} 
+                  className="group relative"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    animation: `fadeInUp 0.8s ease-out ${index * 0.2}s both`
+                  }}
+                >
+                  {/* Experience number */}
+                  <div 
+                    className="absolute -left-4 top-0 text-9xl font-light opacity-5 transition-opacity duration-500"
+                    style={{
+                      color: '#3D0A05',
+                      fontFamily: 'Playfair Display, Times New Roman, serif',
+                      opacity: hoveredIndex === index ? 0.08 : 0.03
+                    }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+
+                  <div className="relative">
+                    {/* Decorative line */}
+                    <div 
+                      className="absolute -left-8 top-0 w-px transition-all duration-700"
+                      style={{
+                        backgroundColor: '#7F1F0E',
+                        height: hoveredIndex === index ? '100%' : '60%'
+                      }}
+                    ></div>
+
+                    {/* Content Container */}
+                    <div className="pl-8 space-y-8">
+                      {/* Header Section */}
+                      <div className="space-y-4">
+                        {/* Category line */}
+                        <div className="flex items-center gap-4">
+                          <div className="h-px w-12" style={{backgroundColor: '#AC746C'}}></div>
+                          <span 
+                            className="text-xs tracking-[0.3em] uppercase"
+                            style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}
+                          >
+                            {exp.duration}
+                          </span>
                         </div>
-                        
-                        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-4">
-                          <div className="flex items-center space-x-2">
-                            <Calendar className="w-4 h-4" />
-                            <span>{exp.duration}</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
+
+                        {/* Position and Company */}
+                        <div>
+                          <h3 
+                            className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-2 transition-all duration-300"
+                            style={{
+                              color: '#3D0A05',
+                              fontFamily: 'Playfair Display, Times New Roman, serif',
+                              opacity: hoveredIndex === index ? 1 : 0.9
+                            }}
+                          >
+                            {exp.position}
+                          </h3>
+                          <p 
+                            className="text-2xl font-light tracking-wide"
+                            style={{color: '#7F1F0E', fontFamily: 'Times New Roman, serif'}}
+                          >
+                            {exp.company}
+                          </p>
+                        </div>
+
+                        {/* Meta Information */}
+                        <div className="flex flex-wrap items-center gap-6 text-sm">
+                          <div className="flex items-center space-x-2" style={{color: '#3D0A05', opacity: 0.6}}>
                             <MapPin className="w-4 h-4" />
-                            <span>{exp.location}</span>
+                            <span style={{fontFamily: 'Times New Roman, serif'}}>{exp.location}</span>
                           </div>
-                          <div className="flex items-center space-x-2">
-                            <Award className="w-4 h-4" />
-                            <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">
-                              {exp.type}
-                            </span>
+                          <div 
+                            className="px-4 py-1 border text-xs tracking-wider uppercase"
+                            style={{
+                              color: '#7F1F0E',
+                              borderColor: '#7F1F0E',
+                              fontFamily: 'Times New Roman, serif'
+                            }}
+                          >
+                            {exp.type}
                           </div>
                         </div>
-                        
-                        <p className="text-gray-700 leading-relaxed mb-6" style={{fontFamily: 'Times New Roman, serif'}}>
+
+                        {/* Description */}
+                        <p 
+                          className="text-base md:text-lg font-light leading-relaxed tracking-wide max-w-3xl pt-4"
+                          style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif', opacity: 0.7}}
+                        >
                           {exp.description}
                         </p>
                       </div>
-                    </div>
 
-                    {/* Achievements */}
-                    <div className="mb-6">
-                      <h4 className="text-lg font-bold text-[#3D0A05] mb-4 flex items-center" style={{fontFamily: 'Times New Roman, serif'}}>
-                        <TrendingUp className="w-5 h-5 mr-2" />
-                        Key Achievements
-                      </h4>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="flex items-start space-x-3">
-                            <ArrowRight className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
-                            <span className="text-gray-700" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {achievement}
+                      {/* Achievements Section */}
+                      <div className="pt-6 border-t" style={{borderColor: '#7F1F0E', borderOpacity: 0.2}}>
+                        <h4 
+                          className="text-sm tracking-[0.2em] uppercase mb-6 flex items-center gap-3"
+                          style={{color: '#7F1F0E', fontFamily: 'Times New Roman, serif'}}
+                        >
+                          <div className="h-px w-8" style={{backgroundColor: '#AC746C'}}></div>
+                          Key Achievements
+                        </h4>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {exp.achievements.map((achievement, achIndex) => (
+                            <div key={achIndex} className="flex items-start space-x-3 group/item">
+                              <div 
+                                className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300"
+                                style={{backgroundColor: '#AC746C'}}
+                              ></div>
+                              <span 
+                                className="text-sm font-light leading-relaxed"
+                                style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif', opacity: 0.7}}
+                              >
+                                {achievement}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Technologies */}
+                      <div className="pt-6">
+                        <h4 
+                          className="text-sm tracking-[0.2em] uppercase mb-6 flex items-center gap-3"
+                          style={{color: '#7F1F0E', fontFamily: 'Times New Roman, serif'}}
+                        >
+                          <div className="h-px w-8" style={{backgroundColor: '#AC746C'}}></div>
+                          Technologies
+                        </h4>
+                        <div className="flex flex-wrap gap-3">
+                          {exp.technologies.map((tech, techIndex) => (
+                            <span 
+                              key={techIndex}
+                              className="text-xs tracking-wider uppercase px-4 py-2 border transition-all duration-300 hover:scale-105"
+                              style={{
+                                color: '#3D0A05',
+                                borderColor: '#7F1F0E',
+                                fontFamily: 'Times New Roman, serif',
+                                backgroundColor: hoveredIndex === index ? 'rgba(127, 31, 14, 0.05)' : 'transparent'
+                              }}
+                            >
+                              {tech}
                             </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="text-lg font-bold text-[#3D0A05] mb-4 flex items-center" style={{fontFamily: 'Times New Roman, serif'}}>
-                        <Code className="w-5 h-5 mr-2" />
-                        Technologies Used
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, techIndex) => (
-                          <span 
-                            key={techIndex}
-                            className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-red-100 hover:text-red-700 transition-colors duration-300"
-                            style={{fontFamily: 'Times New Roman, serif'}}
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -289,58 +371,121 @@ const Experience = () => {
         {/* Education Tab */}
         {activeTab === 1 && (
           <div className={`transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="space-y-12">
+            <div className="space-y-24">
               {education.map((edu, index) => (
-                <div key={index} className={`transform transition-all duration-700 delay-${index * 100} ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
-                  <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 border-l-4 border-blue-600 group">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-4 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <Award className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <h3 className="text-2xl font-bold text-[#3D0A05] group-hover:text-blue-600 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {edu.degree}
-                            </h3>
-                            <p className="text-xl text-gray-700 font-medium" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {edu.institution}
-                            </p>
-                            <p className="text-lg text-blue-600 font-medium" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {edu.specialization}
-                            </p>
-                          </div>
+                <div 
+                  key={index} 
+                  className="group relative"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    animation: `fadeInUp 0.8s ease-out ${index * 0.2}s both`
+                  }}
+                >
+                  {/* Education number */}
+                  <div 
+                    className="absolute -left-4 top-0 text-9xl font-light opacity-5 transition-opacity duration-500"
+                    style={{
+                      color: '#3D0A05',
+                      fontFamily: 'Playfair Display, Times New Roman, serif',
+                      opacity: hoveredIndex === index ? 0.08 : 0.03
+                    }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+
+                  <div className="relative">
+                    {/* Decorative line */}
+                    <div 
+                      className="absolute -left-8 top-0 w-px transition-all duration-700"
+                      style={{
+                        backgroundColor: '#7F1F0E',
+                        height: hoveredIndex === index ? '100%' : '60%'
+                      }}
+                    ></div>
+
+                    {/* Content Container */}
+                    <div className="pl-8 space-y-8">
+                      {/* Header Section */}
+                      <div className="space-y-4">
+                        {/* Category line */}
+                        <div className="flex items-center gap-4">
+                          <div className="h-px w-12" style={{backgroundColor: '#AC746C'}}></div>
+                          <span 
+                            className="text-xs tracking-[0.3em] uppercase"
+                            style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}
+                          >
+                            {edu.duration}
+                          </span>
                         </div>
-                        
-                        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 mb-4">
-                          <div className="flex items-center space-x-2">
-                            <Calendar className="w-4 h-4" />
-                            <span>{edu.duration}</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <TrendingUp className="w-4 h-4" />
-                            <span className="font-medium">GPA: {edu.gpa}</span>
-                          </div>
+
+                        {/* Degree and Institution */}
+                        <div>
+                          <h3 
+                            className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-2 transition-all duration-300"
+                            style={{
+                              color: '#3D0A05',
+                              fontFamily: 'Playfair Display, Times New Roman, serif',
+                              opacity: hoveredIndex === index ? 1 : 0.9
+                            }}
+                          >
+                            {edu.degree}
+                          </h3>
+                          <p 
+                            className="text-2xl font-light tracking-wide mb-2"
+                            style={{color: '#7F1F0E', fontFamily: 'Times New Roman, serif'}}
+                          >
+                            {edu.institution}
+                          </p>
+                          <p 
+                            className="text-lg font-light tracking-wide"
+                            style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}
+                          >
+                            {edu.specialization}
+                          </p>
+                        </div>
+
+                        {/* GPA */}
+                        <div 
+                          className="inline-flex items-center gap-3 px-4 py-2 border"
+                          style={{borderColor: '#7F1F0E'}}
+                        >
+                          <Award className="w-4 h-4" style={{color: '#7F1F0E'}} />
+                          <span 
+                            className="text-sm tracking-wider uppercase font-medium"
+                            style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif'}}
+                          >
+                            GPA: {edu.gpa}
+                          </span>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Achievements */}
-                    <div>
-                      <h4 className="text-lg font-bold text-[#3D0A05] mb-4 flex items-center" style={{fontFamily: 'Times New Roman, serif'}}>
-                        <Users className="w-5 h-5 mr-2" />
-                        Academic Achievements
-                      </h4>
-                      <ul className="space-y-2">
-                        {edu.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="flex items-start space-x-3">
-                            <ArrowRight className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
-                            <span className="text-gray-700" style={{fontFamily: 'Times New Roman, serif'}}>
-                              {achievement}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      {/* Achievements Section */}
+                      <div className="pt-6 border-t" style={{borderColor: '#7F1F0E', borderOpacity: 0.2}}>
+                        <h4 
+                          className="text-sm tracking-[0.2em] uppercase mb-6 flex items-center gap-3"
+                          style={{color: '#7F1F0E', fontFamily: 'Times New Roman, serif'}}
+                        >
+                          <div className="h-px w-8" style={{backgroundColor: '#AC746C'}}></div>
+                          Academic Achievements
+                        </h4>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {edu.achievements.map((achievement, achIndex) => (
+                            <div key={achIndex} className="flex items-start space-x-3 group/item">
+                              <div 
+                                className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300"
+                                style={{backgroundColor: '#AC746C'}}
+                              ></div>
+                              <span 
+                                className="text-sm font-light leading-relaxed"
+                                style={{color: '#3D0A05', fontFamily: 'Times New Roman, serif', opacity: 0.7}}
+                              >
+                                {achievement}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -349,26 +494,60 @@ const Experience = () => {
           </div>
         )}
 
-        {/* Bottom CTA */}
-        <div className={`mt-20 text-center transform transition-all duration-1000 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="bg-gradient-to-r from-[#3D0A05] to-red-700 rounded-2xl p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4" style={{fontFamily: 'Times New Roman, serif'}}>
-              Ready to Work Together?
-            </h3>
-            <p className="text-xl mb-8 opacity-90" style={{fontFamily: 'Times New Roman, serif'}}>
-              Let's discuss how my experience can help your next project
+        {/* Bottom CTA - Editorial Style */}
+        <div className={`mt-32 pt-20 border-t transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{borderColor: '#7F1F0E'}}>
+          <div className="text-center space-y-10">
+            <div className="inline-block">
+              <p className="text-xs tracking-[0.3em] uppercase mb-4" style={{color: '#AC746C', fontFamily: 'Times New Roman, serif'}}>
+                Let's Collaborate
+              </p>
+              <div className="h-px w-24 mx-auto" style={{backgroundColor: '#AC746C'}}></div>
+            </div>
+            
+            <p 
+              className="text-4xl md:text-5xl font-light tracking-tight max-w-3xl mx-auto"
+              style={{color: '#3D0A05', fontFamily: 'Playfair Display, Times New Roman, serif'}}
+            >
+              Ready to create something extraordinary together?
             </p>
+            
             <a
               href="#contact"
-              className="inline-flex items-center px-8 py-4 bg-white text-[#3D0A05] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              style={{fontFamily: 'Times New Roman, serif'}}
+              className="group/cta inline-flex items-center gap-4 text-sm tracking-[0.2em] uppercase px-12 py-5 border transition-all duration-500 hover:scale-105 relative overflow-hidden"
+              style={{fontFamily: 'Times New Roman, serif', borderColor: '#3D0A05'}}
             >
-              Get In Touch
-              <ArrowRight className="ml-3 w-5 h-5" />
+              <span className="relative z-10 transition-colors duration-300" style={{color: '#3D0A05'}}>
+                Start a Conversation
+              </span>
+              <ArrowRight 
+                className="w-5 h-5 relative z-10 transition-all duration-300 group-hover/cta:translate-x-2" 
+                style={{color: '#3D0A05'}}
+              />
+              <div 
+                className="absolute inset-0 transition-transform duration-500 ease-out origin-left"
+                style={{
+                  backgroundColor: '#3D0A05',
+                  transform: 'scaleX(0)'
+                }}
+              ></div>
             </a>
           </div>
         </div>
       </div>
+
+      {/* Fade in animation keyframes */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };
