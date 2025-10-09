@@ -151,7 +151,7 @@ const Contact = () => {
               CONTACT
             </h2>
             <p className="text-xl text-red-200 max-w-2xl mx-auto leading-relaxed" style={{fontFamily: 'Times New Roman, serif'}}>
-              Let's collaborate and bring your ideas to life ..
+              Let's collaborate and bring your ideas to life .
             </p>
           </div>
         </div>
