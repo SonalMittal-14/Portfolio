@@ -15,7 +15,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
-      subtitle: 'THE FOUNDATION',
+      subtitle: 'PROGRAMMING LANGUAGES', 
       skills: [
         { name: 'Java', level: 95 },
         { name: 'Python', level: 92 },
@@ -30,7 +30,7 @@ const Skills = () => {
     },
     {
       title: 'Tools & Frameworks',
-      subtitle: 'THE ARSENAL',
+      subtitle: 'TOOLS & FRAMEWORKS', 
       skills: [
         { name: 'ReactJS', level: 96 },
         { name: 'NextJS', level: 94 },
@@ -47,7 +47,7 @@ const Skills = () => {
     },
     {
       title: 'Technical Concepts',
-      subtitle: 'THE VISION',
+      subtitle: 'TECHNICAL CONCEPTS', 
       skills: [
         { name: 'UI/UX Design', level: 93 },
         { name: 'Cloud Computing', level: 87 },
@@ -70,7 +70,7 @@ const Skills = () => {
   if (!mounted) return null;
 
   return (
-    <section id="skills" className="min-h-screen py-32 relative overflow-hidden" style={{backgroundColor: '#F9F6EE'}}>
+    <section id="skills" className="min-h-screen  pt-6 pb-12 relative overflow-hidden" style={{backgroundColor: '#F9F6EE'}}>
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-px h-40 bg-gradient-to-b from-[#4B0000] to-transparent transform rotate-12"></div>
@@ -150,14 +150,14 @@ const Skills = () => {
                       </div>
 
                       {/* Skill Name */}
-                      <div className="mb-6">
+                      <div className="">
                         <h3 className="text-2xl font-light tracking-wide mb-2" style={{color: '#4B0000', fontFamily: 'Times New Roman, serif'}}>
                           {skill.name}
                         </h3>
                       </div>
 
                       {/* Progress Bar - About Style */}
-                      <div className="space-y-2">
+                      {/* <div className="space-y-2">
                         <div className="flex justify-between items-center text-xs tracking-wider">
                           <span className="uppercase text-gray-600" style={{fontFamily: 'Times New Roman, serif'}}>Proficiency</span>
                           <span className="font-bold" style={{color: '#4B0000', fontFamily: 'Times New Roman, serif'}}>{skill.level}%</span>
@@ -172,7 +172,7 @@ const Skills = () => {
                             }}
                           ></div>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Decorative Element - About Style */}
                       <div className="absolute -bottom-2 -right-2 w-16 h-16 border border-gray-200 group-hover:border-[#4B0000]/40 transition-all duration-500 -z-10 rounded-lg"></div>

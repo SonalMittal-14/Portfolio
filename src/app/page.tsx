@@ -6,7 +6,7 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+// import Footer from '@/components/Footer';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +21,7 @@ export default function Home() {
         <Experience />
         <Contact />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

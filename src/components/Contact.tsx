@@ -1,7 +1,4 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { 
   Mail, 
   Phone, 
@@ -14,26 +11,32 @@ import {
   AlertCircle,
   User,
   MessageSquare,
-  Calendar
+  Sparkles,
+  ArrowUpRight,
+  Circle
 } from 'lucide-react';
+
+
+
 
 const Contact = () => {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [formStatus, setFormStatus] = useState('idle');
 
   useEffect(() => {
     setMounted(true);
-    setTimeout(() => setIsVisible(true), 200);
+    setTimeout(() => setIsVisible(true), 100);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -41,11 +44,12 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const currentYear = new Date().getFullYear();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('sending');
     
-    // Simulate form submission
     setTimeout(() => {
       setFormStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
@@ -53,327 +57,318 @@ const Contact = () => {
     }, 2000);
   };
 
-  const contactInfo = [
+  const contactMethods = [
     {
       icon: Mail,
-      title: 'Email',
+      label: 'Email',
       value: 'sonal.mittal@email.com',
       link: 'mailto:sonal.mittal@email.com',
-      color: 'from-red-500 to-pink-500'
+      description: 'Drop me a line anytime'
     },
     {
       icon: Phone,
-      title: 'Phone',
+      label: 'Phone',
       value: '+1 (555) 123-4567',
       link: 'tel:+15551234567',
-      color: 'from-blue-500 to-cyan-500'
+      description: 'Available Mon-Fri, 9AM-6PM PST'
     },
     {
       icon: MapPin,
-      title: 'Location',
+      label: 'Location',
       value: 'San Francisco, CA',
       link: '#',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: Linkedin,
-      title: 'LinkedIn',
-      value: 'linkedin.com/in/sonalmittal',
-      link: 'https://linkedin.com/in/sonalmittal',
-      color: 'from-blue-600 to-blue-800'
+      description: 'Open to remote collaboration'
     }
   ];
 
   const socialLinks = [
-    {
-      icon: Github,
-      name: 'GitHub',
-      link: 'https://github.com/sonalmittal',
-      color: 'hover:from-gray-800 hover:to-gray-900'
-    },
-    {
-      icon: Twitter,
-      name: 'Twitter',
-      link: 'https://twitter.com/sonalmittal',
-      color: 'hover:from-blue-400 hover:to-blue-600'
-    },
-    {
-      icon: Linkedin,
-      name: 'LinkedIn',
-      link: 'https://linkedin.com/in/sonalmittal',
-      color: 'hover:from-blue-600 hover:to-blue-800'
-    }
+    { icon: Github, name: 'GitHub', link: 'https://github.com/sonalmittal' },
+    { icon: Twitter, name: 'Twitter', link: 'https://twitter.com/sonalmittal' },
+    { icon: Linkedin, name: 'LinkedIn', link: 'https://linkedin.com/in/sonalmittal' }
   ];
 
-  if (!mounted) {
-    return (
-      <section id="contact" className="min-h-screen py-32" style={{backgroundColor: '#3D0A05'}}>
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-20">
-            <div className="h-8 w-32 bg-gray-300 rounded animate-pulse mx-auto mb-6"></div>
-            <div className="h-16 w-64 bg-gray-300 rounded animate-pulse mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            <div className="h-96 bg-gray-800 rounded-2xl animate-pulse"></div>
-            <div className="space-y-8">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-20 bg-gray-800 rounded animate-pulse"></div>
-              ))}
-            </div>
-            <div className="bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <div className="space-y-4">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="h-12 bg-gray-700 rounded animate-pulse"></div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  if (!mounted) return null;
 
   return (
-    <section id="contact" className="min-h-screen py-32 relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
-      {/* Decorative Background Elements */}
+    <section id="contact" className="min-h-screen relative overflow-hidden" style={{backgroundColor: '#3D0A05'}}>
+      {/* Sophisticated Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-px h-40 bg-gradient-to-b from-white to-transparent transform rotate-12"></div>
-        <div className="absolute bottom-32 right-32 w-px h-60 bg-gradient-to-t from-white to-transparent transform -rotate-12"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-px bg-gradient-to-r from-red-300/30 to-transparent transform -rotate-45"></div>
+        <div className="absolute top-0 left-0 w-full h-full" 
+             style={{
+               backgroundImage: `radial-gradient(circle at 2px 2px, #DAC1B1 1px, transparent 0)`,
+               backgroundSize: '40px 40px'
+             }}>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        {/* Section Header */}
-        <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="text-center mb-20">
-            <div className="w-24 h-px bg-gradient-to-r from-red-300 to-red-300/30 mx-auto mb-6"></div>
-            <h2 className="text-6xl xl:text-7xl font-black text-white tracking-tight mb-6" style={{fontFamily: 'Times New Roman, serif'}}>
-              CONTACT
-            </h2>
-            <p className="text-xl text-red-200 max-w-2xl mx-auto leading-relaxed" style={{fontFamily: 'Times New Roman, serif'}}>
-              Let's collaborate and bring your ideas to life
-            </p>
+      {/* Animated gradient orbs */}
+      <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#DAC1B1]/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-[#AC746C]/10 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+        {/* Header */}
+        <div className={`text-center mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#DAC1B1] to-transparent"></div>
+            <Sparkles className="w-6 h-6 text-[#DAC1B1]" />
+            <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#DAC1B1] to-transparent"></div>
           </div>
+          
+          <h2 className="text-5xl md:text-7xl lg:text-7xl font-light tracking-tight mb-6" 
+              style={{color: '#DAC1B1', fontFamily: 'Playfair Display, serif'}}>
+            Let's Talk
+          </h2>
+          
+          <p className="text-xl tracking-widest uppercase" style={{color: '#AC746C', fontFamily: 'Georgia, serif', letterSpacing: '0.3em'}}>
+            Craft Your Vision
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Left Side - Profile Image */}
-          <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-            <div className="relative">
-              {/* Profile Image */}
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <Image
-                  src="/images/dark/SonalPicture.jpg"
-                  alt="Sonal Mittal - AI Engineer & Developer"
-                  width={400}
-                  height={500}
-                  className="w-full h-auto object-cover"
-                  style={{
-                    aspectRatio: '4/5',
-                    objectFit: 'cover'
-                  }}
-                />
-                
-                {/* Elegant overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-              </div>
-
-              {/* Floating Contact Card */}
-              <div className="absolute -bottom-8 -right-8 bg-white shadow-xl rounded-lg p-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#3D0A05] rounded-full flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Left Column - Contact Info & Image */}
+          <div className={`lg:col-span-2 space-y-8 transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
+            {/* Featured Image */}
+            <div className="relative group overflow-hidden aspect-[3/4]">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3D0A05] via-[#3D0A05]/40 to-transparent z-10"></div>
+              <img
+                src="images/dark/SonalPicture.jpg"
+                alt="Contact"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              {/* Floating Badge */}
+              <div className="absolute bottom-8 left-8 right-8 z-20 bg-[#DAC1B1] p-6 transform transition-all duration-500 group-hover:translate-y-0 translate-y-2">
+                <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-bold text-[#3D0A05]" style={{fontFamily: 'Times New Roman, serif'}}>Quick Response</p>
-                    <p className="text-xs text-gray-600">24 hours</p>
+                    <p className="text-sm font-bold tracking-widest uppercase" style={{color: '#3D0A05'}}>
+                      Available Now
+                    </p>
+                    <p className="text-xs tracking-wider" style={{color: '#7F1F0E'}}>
+                      Response in 24h
+                    </p>
                   </div>
+                  <Circle className="w-3 h-3 fill-[#7F1F0E] text-[#7F1F0E] animate-pulse" />
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Middle - Contact Info */}
-          <div className={`transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <div className="space-y-8">
-              {/* Main Contact Info */}
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
+            {/* Contact Methods */}
+            <div className="space-y-4">
+              {contactMethods.map((method, index) => (
+                <a
+                  key={index}
+                  href={method.link}
+                  onMouseEnter={() => setActiveCard(index)}
+                  onMouseLeave={() => setActiveCard(null)}
+                  className="block group"
+                >
+                  <div className={`p-6 border transition-all duration-500 ${
+                    activeCard === index 
+                      ? 'border-[#DAC1B1] bg-[#7F1F0E]/20' 
+                      : 'border-[#7F1F0E]/30 bg-[#7F1F0E]/10'
+                  }`}>
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 flex items-center justify-center transition-all duration-500 ${
+                        activeCard === index 
+                          ? 'bg-gradient-to-br from-[#DAC1B1] to-[#AC746C]' 
+                          : 'bg-[#7F1F0E]/40'
+                      }`}>
+                        <method.icon className={`w-6 h-6 transition-colors duration-300 ${
+                          activeCard === index ? 'text-[#3D0A05]' : 'text-[#DAC1B1]'
+                        }`} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs tracking-widest uppercase mb-1" style={{color: '#AC746C'}}>
+                          {method.label}
+                        </p>
+                        <p className="text-lg font-light mb-1" style={{color: '#DAC1B1'}}>
+                          {method.value}
+                        </p>
+                        <p className="text-sm" style={{color: '#7F1F0E'}}>
+                          {method.description}
+                        </p>
+                      </div>
+                      <ArrowUpRight className={`w-5 h-5 transition-all duration-300 ${
+                        activeCard === index 
+                          ? 'text-[#DAC1B1] translate-x-1 -translate-y-1' 
+                          : 'text-[#7F1F0E]'
+                      }`} />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Social Links */}
+            <div className="border border-[#7F1F0E]/30 p-8">
+              <p className="text-sm tracking-widest uppercase mb-6 text-center" style={{color: '#AC746C'}}>
+                Follow Along
+              </p>
+              <div className="flex justify-center gap-6">
+                {socialLinks.map((social, index) => (
                   <a
                     key={index}
-                    href={info.link}
-                    className="group flex items-center space-x-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20"
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 border border-[#DAC1B1]/30 flex items-center justify-center hover:bg-[#DAC1B1] hover:border-[#DAC1B1] transition-all duration-300 group"
                   >
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${info.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <info.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white group-hover:text-red-300 transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                        {info.title}
-                      </h3>
-                      <p className="text-red-200 group-hover:text-white transition-colors duration-300" style={{fontFamily: 'Times New Roman, serif'}}>
-                        {info.value}
-                      </p>
-                    </div>
+                    <social.icon className="w-5 h-5 text-[#DAC1B1] group-hover:text-[#3D0A05] transition-colors duration-300" />
                   </a>
                 ))}
               </div>
-
-              {/* Social Links */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-6 text-center" style={{fontFamily: 'Times New Roman, serif'}}>
-                  Follow Me
-                </h3>
-                <div className="flex justify-center space-x-6">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center ${social.color} transition-all duration-300 hover:scale-110 hover:shadow-lg group`}
-                    >
-                      <social.icon className="w-6 h-6 text-white group-hover:text-white transition-colors duration-300" />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white/20">
-              <div className="mb-8">
-                <h3 className="text-3xl font-bold text-white mb-4" style={{fontFamily: 'Times New Roman, serif'}}>
-                  Send a Message
+          {/* Right Column - Contact Form */}
+          <div className={`lg:col-span-3 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
+            <div className="border border-[#7F1F0E]/30 p-10 lg:p-14 bg-[#7F1F0E]/5 backdrop-blur-sm">
+              <div className="mb-12">
+                <h3 className="text-5xl font-light mb-4" style={{color: '#DAC1B1', fontFamily: 'Playfair Display, serif'}}>
+                  Start a Conversation
                 </h3>
-                <p className="text-red-200" style={{fontFamily: 'Times New Roman, serif'}}>
-                  I'd love to hear about your project and discuss how we can work together.
+                <p className="text-lg leading-relaxed" style={{color: '#AC746C'}}>
+                  Share your vision and let's create something remarkable together. Every great project starts with a conversation.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-white mb-2" style={{fontFamily: 'Times New Roman, serif'}}>
-                      <User className="w-4 h-4 inline mr-2" />
-                      Full Name
+                    <label className="block text-xs tracking-widest uppercase mb-3" style={{color: '#DAC1B1'}}>
+                      Your Name *
                     </label>
                     <input
                       type="text"
-                      id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl focus:ring-2 focus:ring-red-300 focus:border-transparent transition-all duration-300 text-white placeholder-gray-300"
-                      placeholder="Your full name"
+                      className="w-full px-0 py-3 bg-transparent border-b-2 border-[#7F1F0E]/40 focus:border-[#DAC1B1] outline-none transition-all duration-300 text-lg"
+                      style={{color: '#DAC1B1'}}
+                      placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white mb-2" style={{fontFamily: 'Times New Roman, serif'}}>
-                      <Mail className="w-4 h-4 inline mr-2" />
-                      Email Address
+                    <label className="block text-xs tracking-widest uppercase mb-3" style={{color: '#DAC1B1'}}>
+                      Email Address *
                     </label>
                     <input
                       type="email"
-                      id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl focus:ring-2 focus:ring-red-300 focus:border-transparent transition-all duration-300 text-white placeholder-gray-300"
-                      placeholder="your.email@example.com"
+                      className="w-full px-0 py-3 bg-transparent border-b-2 border-[#7F1F0E]/40 focus:border-[#DAC1B1] outline-none transition-all duration-300 text-lg"
+                      style={{color: '#DAC1B1'}}
+                      placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-white mb-2" style={{fontFamily: 'Times New Roman, serif'}}>
-                    <MessageSquare className="w-4 h-4 inline mr-2" />
-                    Subject
+                  <label className="block text-xs tracking-widest uppercase mb-3" style={{color: '#DAC1B1'}}>
+                    Subject *
                   </label>
                   <input
                     type="text"
-                    id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl focus:ring-2 focus:ring-red-300 focus:border-transparent transition-all duration-300 text-white placeholder-gray-300"
-                    placeholder="What's this about?"
+                    className="w-full px-0 py-3 bg-transparent border-b-2 border-[#7F1F0E]/40 focus:border-[#DAC1B1] outline-none transition-all duration-300 text-lg"
+                    style={{color: '#DAC1B1'}}
+                    placeholder="Project Inquiry"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white mb-2" style={{fontFamily: 'Times New Roman, serif'}}>
-                    <MessageSquare className="w-4 h-4 inline mr-2" />
-                    Message
+                  <label className="block text-xs tracking-widest uppercase mb-3" style={{color: '#DAC1B1'}}>
+                    Your Message *
                   </label>
                   <textarea
-                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl focus:ring-2 focus:ring-red-300 focus:border-transparent transition-all duration-300 resize-none text-white placeholder-gray-300"
-                    placeholder="Tell me about your project, goals, and how I can help..."
+                    className="w-full px-0 py-3 bg-transparent border-b-2 border-[#7F1F0E]/40 focus:border-[#DAC1B1] outline-none transition-all duration-300 resize-none text-lg"
+                    style={{color: '#DAC1B1'}}
+                    placeholder="Tell me about your vision..."
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={formStatus === 'sending'}
-                  className={`w-full py-4 px-8 rounded-xl font-bold text-white transition-all duration-300 transform hover:-translate-y-1 ${
-                    formStatus === 'sending'
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : formStatus === 'success'
-                      ? 'bg-green-600 hover:bg-green-700'
-                      : formStatus === 'error'
-                      ? 'bg-red-600 hover:bg-red-700'
-                      : 'bg-white text-[#3D0A05] hover:bg-gray-200 shadow-lg hover:shadow-xl'
-                  }`}
-                  style={{fontFamily: 'Times New Roman, serif'}}
-                >
-                  {formStatus === 'sending' ? (
-                    <div className="flex items-center justify-center">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
-                      Sending...
-                    </div>
-                  ) : formStatus === 'success' ? (
-                    <div className="flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 mr-3" />
-                      Message Sent!
-                    </div>
-                  ) : formStatus === 'error' ? (
-                    <div className="flex items-center justify-center">
-                      <AlertCircle className="w-5 h-5 mr-3" />
-                      Try Again
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center">
-                      <Send className="w-5 h-5 mr-3" />
-                      Send Message
-                    </div>
-                  )}
-                </button>
+                <div className="pt-6">
+                  <button
+                    type="submit"
+                    disabled={formStatus === 'sending'}
+                    className={`w-full py-5 px-8 text-lg tracking-widest uppercase transition-all duration-500 group relative overflow-hidden ${
+                      formStatus === 'sending'
+                        ? 'bg-[#AC746C] cursor-wait'
+                        : formStatus === 'success'
+                        ? 'bg-[#7F1F0E]'
+                        : 'bg-gradient-to-r from-[#DAC1B1] to-[#AC746C] hover:from-[#AC746C] hover:to-[#7F1F0E]'
+                    }`}
+                    style={{color: '#3D0A05', fontWeight: 600}}
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                      {formStatus === 'sending' ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-[#3D0A05] border-t-transparent rounded-full animate-spin"></div>
+                          Sending
+                        </>
+                      ) : formStatus === 'success' ? (
+                        <>
+                          <CheckCircle className="w-5 h-5" />
+                          Message Sent
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                        </>
+                      )}
+                    </span>
+                  </button>
+                </div>
               </form>
 
-              {/* Additional Info */}
-              <div className="mt-8 pt-8 border-t border-white/20">
-                <div className="flex items-center justify-center space-x-2 text-sm text-red-200">
-                  <Calendar className="w-4 h-4" />
-                  <span style={{fontFamily: 'Times New Roman, serif'}}>
-                    Available for new projects • Response within 24 hours
-                  </span>
+              {/* Footer Note */}
+              <div className="mt-12 pt-8 border-t border-[#7F1F0E]/30">
+                <div className="flex items-center justify-between text-sm">
+                  <p style={{color: '#AC746C'}}>
+                    Typically responds within 24 hours
+                  </p>
+                  {/* <div className="flex items-center gap-2">
+                    <Circle className="w-2 h-2 fill-[#7F1F0E] text-[#7F1F0E] animate-pulse" />
+                    <span style={{color: '#7F1F0E'}}>Currently available</span>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Bottom Accent */}
+        <div className="mt-20 text-center">
+          <div className="flex items-center justify-center gap-4">
+            <div className="h-px w-32 bg-gradient-to-r from-transparent to-[#7F1F0E]/50"></div>
+            <p className="text-xs tracking-widest uppercase" style={{color: '#7F1F0E'}}>
+              Let's Build Something Exceptional
+            </p>
+            <div className="h-px w-32 bg-gradient-to-l from-transparent to-[#7F1F0E]/50"></div>
+          </div>
+        </div>
       </div>
+
+
+      <div className="border-t border-silk/20 mt-8 pt-8 pb-15 text-center">
+          <p className="text-silk/80 dark:text-silk/80">
+            © {currentYear} Your Name. All rights reserved.
+          </p>
+        </div>
+      
     </section>
   );
 };
